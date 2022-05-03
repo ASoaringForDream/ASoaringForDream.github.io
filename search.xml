@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Hexo博客发表文章</title>
+      <link href="/2022/05/03/hexo-bo-ke-fa-biao-wen-zhang/"/>
+      <url>/2022/05/03/hexo-bo-ke-fa-biao-wen-zhang/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Hexo博客发表文章"><a href="#Hexo博客发表文章" class="headerlink" title="Hexo博客发表文章"></a>Hexo博客发表文章</h1><h3 id="发表文章"><a href="#发表文章" class="headerlink" title="发表文章"></a>发表文章</h3><p>在hexo根目录下输入以下指令：</p><pre class="line-numbers language-none"><code class="language-none">hexo new &#39;文章标题&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h3 id="文章-Front-matter"><a href="#文章-Front-matter" class="headerlink" title="文章 Front-matter"></a>文章 Front-matter</h3><table><thead><tr><th>配置项</th><th>默认值</th><th>配置描述</th></tr></thead><tbody><tr><td>title</td><td>Markdown 的文件标题</td><td>文章的标题，官方建议填写</td></tr><tr><td>date</td><td>文件创建的日期</td><td>文章的日期，官方建议填写</td></tr><tr><td>author</td><td>hexo根目录下_config.yml 中的 author</td><td>文章的作者</td></tr><tr><td>img</td><td>featureImages 中的某个值</td><td>文章特征图，推荐使用图床</td></tr><tr><td>top</td><td>true</td><td>推荐文章（文章是否置顶），如果 top 值为 true，则会作为首页推荐文章</td></tr><tr><td>cover</td><td>false</td><td>文章是否需要加入到首页轮播封面中</td></tr><tr><td>coverImg</td><td>无</td><td>文章在首页轮播封面需要显示的图片路径，如果没有，则默认使用文章的特色图片</td></tr><tr><td>password</td><td>无</td><td>文章阅读密码，如果要对文章设置阅读验证密码的话，就可以设置 password 的值，该值必须是用 SHA256 加密后的密码，防止被他人识破。前提是在主题的 config.yml 中激活了 verifyPassword 选项</td></tr><tr><td>toc</td><td>true</td><td>是否开启 TOC（文章目录），可以针对某篇文章单独关闭 TOC 的功能。前提是在主题的 config.yml 中激活了 toc 选项</td></tr><tr><td>mathjax</td><td>false</td><td>是否开启数学公式支持 ，本文章是否开启 mathjax，且需要在主题的 _config.yml 文件中也需要开启才行</td></tr><tr><td>summary</td><td>无</td><td>文章摘要，自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章最开始的部分内容作为摘要</td></tr><tr><td>categories</td><td>无</td><td>文章分类，本主题的分类表示宏观上大的分类，只建议一篇文章一个分类</td></tr><tr><td>tags</td><td>无</td><td>文章标签，一篇文章可以多个标签</td></tr><tr><td>reprintPolicy</td><td>主题目录下_config.yml中设置的转载规则</td><td>文章转载规则， 可以是 cc_by, cc_by_nd, cc_by_sa, cc_by_nc, cc_by_nc_nd, cc_by_nc_sa, cc0, noreprint 或 pay 中的一个</td></tr></tbody></table><p>示例如下：</p><pre class="line-numbers language-none"><code class="language-none">---title: Hexo博客发表文章date: 2018-09-07 09:25:00author: Paper Planeimg: &#x2F;source&#x2F;images&#x2F;img1.jpgtop: truecover: truecoverImg: &#x2F;images&#x2F;1.jpgpassword: 8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92toc: falsemathjax: falsesummary: Hexo博客发表文章的摘要categories: Hexotags:  - Hexo  - 发表文章---<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="定义文章创建时的模板"><a href="#定义文章创建时的模板" class="headerlink" title="定义文章创建时的模板"></a>定义文章创建时的模板</h3><p>为了新建文章方便，我们可以修改一下hexo博客生成文章时的模板，可以将hexo根目录下的<code>/scaffolds/post.md</code>修改为你希望的模板，示例代码如下：</p><pre class="line-numbers language-none"><code class="language-none">---title: &#123;&#123; title &#125;&#125;date: &#123;&#123; date &#125;&#125;author: Paper Planeimg: coverImg: top: falsecover: falsetoc: truemathjax: falsepassword:summary: &#123;&#123; title &#125;&#125;keywords:tags:categories:---<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hexo博客Matery主题添加valine评论模块</title>
       <link href="/2022/05/03/hexo-bo-ke-matery-zhu-ti-tian-jia-valine-ping-lun-mo-kuai/"/>
       <url>/2022/05/03/hexo-bo-ke-matery-zhu-ti-tian-jia-valine-ping-lun-mo-kuai/</url>
