@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Hexo博客Matery主题添加valine评论模块</title>
+      <link href="/2022/05/03/hexo-bo-ke-matery-zhu-ti-tian-jia-valine-ping-lun-mo-kuai/"/>
+      <url>/2022/05/03/hexo-bo-ke-matery-zhu-ti-tian-jia-valine-ping-lun-mo-kuai/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Hexo博客Matery主题添加valine评论模块"><a href="#Hexo博客Matery主题添加valine评论模块" class="headerlink" title="Hexo博客Matery主题添加valine评论模块"></a>Hexo博客Matery主题添加valine评论模块</h1><h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><p>首先在<a href="https://console.leancloud.cn/">LeanCloud</a>官网注册账号（如果已经拥有账号则忽略）</p><p>点击‘创建应用’</p><p><img src="/2022/05/03/hexo-bo-ke-matery-zhu-ti-tian-jia-valine-ping-lun-mo-kuai/img1.png"></p><p>点击设置</p><p><img src="/2022/05/03/hexo-bo-ke-matery-zhu-ti-tian-jia-valine-ping-lun-mo-kuai/img2.png"></p><p>点击‘应用凭证’ 获取AppID，AppKey</p><p><img src="/2022/05/03/hexo-bo-ke-matery-zhu-ti-tian-jia-valine-ping-lun-mo-kuai/img3.png"></p><h3 id="配置valine"><a href="#配置valine" class="headerlink" title="配置valine"></a>配置valine</h3><p>找到主题文件目录下的_config.yml文件 启动valine</p><pre class="line-numbers language-none"><code class="language-none">valine:  enable: true  appId: 你的AppID  appKey: 你的AppKey  notify: false  verify: false  visitor: true  avatar: &#39;mm&#39; # Gravatar style : mm&#x2F;identicon&#x2F;monsterid&#x2F;wavatar&#x2F;retro&#x2F;hide  pageSize: 10  placeholder: &#39;这里是空空如也ヾ(ｏ･ω･)ﾉ&#39; # Comment Box placeholder  background: &#x2F;medias&#x2F;comment_bg.png  coolpushkey: <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>这样你就可以在leanCloud官网中管理自己的评论啦！</p><p><img src="/2022/05/03/hexo-bo-ke-matery-zhu-ti-tian-jia-valine-ping-lun-mo-kuai/img4.png"></p><h3 id="配置valine跟随最新版本"><a href="#配置valine跟随最新版本" class="headerlink" title="配置valine跟随最新版本"></a>配置valine跟随最新版本</h3><p>找到主题文件目录下的_config.yml文件找如下内容并更改</p><p><img src="/2022/05/03/hexo-bo-ke-matery-zhu-ti-tian-jia-valine-ping-lun-mo-kuai/img5.png"></p><p>这样valine就会自动保持最新版啦！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+            <tag> Matery </tag>
+            
+            <tag> valine </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hexo博客的Matery主题的个性化配置</title>
       <link href="/2022/05/02/hexo-bo-ke-de-matery-zhu-ti-de-ge-xing-hua-pei-zhi/"/>
       <url>/2022/05/02/hexo-bo-ke-de-matery-zhu-ti-de-ge-xing-hua-pei-zhi/</url>
