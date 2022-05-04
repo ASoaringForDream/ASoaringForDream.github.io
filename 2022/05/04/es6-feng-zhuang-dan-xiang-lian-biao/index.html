@@ -541,9 +541,13 @@
         <span class="token punctuation">&#125;</span>
         <span class="token keyword">const</span> node <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
         <span class="token keyword">if</span> <span class="token punctuation">(</span>pos <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-          node<span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>head
-          <span class="token keyword">this</span><span class="token punctuation">.</span>head <span class="token operator">=</span> node
-          <span class="token keyword">this</span><span class="token punctuation">.</span>length<span class="token operator">++</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>head<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
+          <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+            node<span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>head
+            <span class="token keyword">this</span><span class="token punctuation">.</span>head <span class="token operator">=</span> node
+            <span class="token keyword">this</span><span class="token punctuation">.</span>length<span class="token operator">++</span>
+          <span class="token punctuation">&#125;</span>
         <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>pos <span class="token operator">===</span> <span class="token keyword">this</span><span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
           <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
         <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
@@ -560,7 +564,7 @@
           <span class="token keyword">this</span><span class="token punctuation">.</span>length<span class="token operator">++</span>
         <span class="token punctuation">&#125;</span>
         <span class="token keyword">return</span> <span class="token boolean">true</span>
-      <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+      <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="get方法实现"><a href="#get方法实现" class="headerlink" title="get方法实现"></a>get方法实现</h4><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token function">get</span><span class="token punctuation">(</span>pos<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token comment">// 判断位置溢出</span>
