@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="ES6封装单向链表, Paper Plane">
-    <meta name="description" content="使用JavaScript-ES6封装单向链表">
+    <meta name="keywords" content="二叉搜索树优化——红黑树, Paper Plane">
+    <meta name="description" content="简单介绍红黑树保持基本平衡的原理，插入操作原理，最后说一个红黑树插入的案例">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -28,7 +28,7 @@
     </style>
 
 
-    <title>ES6封装单向链表 | Paper Plane</title>
+    <title>二叉搜索树优化——红黑树 | Paper Plane</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -255,12 +255,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">ES6封装单向链表</h1>
+                    <h1 class="description center-align post-title">二叉搜索树优化——红黑树</h1>
                 </div>
             </div>
         </div>
@@ -388,8 +388,8 @@
                                 <span class="chip bg-color">数据结构</span>
                             </a>
                         
-                            <a href="/tags/%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8/">
-                                <span class="chip bg-color">单向链表</span>
+                            <a href="/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/">
+                                <span class="chip bg-color">二叉搜索树</span>
                             </a>
                         
                     </div>
@@ -413,28 +413,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-05-04
+                    2022-05-06
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-05-04
+                    2022-05-07
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    1.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    5 分
                 </div>
                 
 
@@ -457,305 +457,67 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="ES6封装单向链表"><a href="#ES6封装单向链表" class="headerlink" title="ES6封装单向链表"></a>ES6封装单向链表</h1><h2 id="简介链表与数组的区别"><a href="#简介链表与数组的区别" class="headerlink" title="简介链表与数组的区别"></a>简介链表与数组的区别</h2><h4 id="数组："><a href="#数组：" class="headerlink" title="数组："></a>数组：</h4><ul>
-<li>在内存空间中，数组是连续的一块区域</li>
-<li>数组声明时要声明大小，可能造成空间的浪费，也可能会因为空间不足而作扩容，效率下降</li>
-<li>可以通过下标值来访问数据，随机读取效率较高。</li>
-<li>插入数据和删除数据效率低，从中间或前面进行插入或删除操作时，后面的元素要依次位移，效率低下</li>
-</ul>
-<h4 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h4><ul>
-<li>在内存中，链表中的元素可以不是连续的</li>
-<li>每个数据中都存储了下一个数据的位置，可以通过上一个元素查询下一个元素</li>
-<li>增加删除数据变得简单</li>
-<li>没有下标值，查询必须从头开始查，查询效率低下</li>
-<li>无需指定大小，随意更改长度</li>
-</ul>
-<h4 id="两者不同操作的时间复杂度"><a href="#两者不同操作的时间复杂度" class="headerlink" title="两者不同操作的时间复杂度"></a>两者不同操作的时间复杂度</h4><table>
-<thead>
-<tr>
-<th>操作</th>
-<th>数组</th>
-<th>链表</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>读取</td>
-<td>O(1)</td>
-<td>O(n)</td>
-</tr>
-<tr>
-<td>插入</td>
-<td>O(n)</td>
-<td>O(1)</td>
-</tr>
-<tr>
-<td>删除</td>
-<td>O(n)</td>
-<td>O(1)</td>
-</tr>
-</tbody></table>
-<h2 id="ES6实现单链表"><a href="#ES6实现单链表" class="headerlink" title="ES6实现单链表"></a>ES6实现单链表</h2><h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>一般单向链表需要实现以下基本方法</p>
-<ul>
-<li>append(value) 在最后追加元素</li>
-<li>insert(pos, value) 在指定位置插入元素</li>
-<li>get(pos) 获取指定位置元素的值</li>
-<li>indexOf(value) 获取指定值的元素的位置</li>
-<li>update(pos, value) 更新指定元素的值</li>
-<li>removeAt(pos) 删除指定位置的元素</li>
-<li>remove(value) 删除指定值的元素</li>
-<li>isEmpty() 判断链表是否为空</li>
-<li>size() 返回链表的长度</li>
-</ul>
-<h4 id="初始化Node和链表"><a href="#初始化Node和链表" class="headerlink" title="初始化Node和链表"></a>初始化Node和链表</h4><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">class</span> <span class="token class-name">Node</span> <span class="token punctuation">&#123;</span>
-      <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>item <span class="token operator">=</span> item
-        <span class="token keyword">this</span><span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token keyword">null</span>
-      <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token keyword">class</span> <span class="token class-name">LinkedList</span> <span class="token punctuation">&#123;</span>
-	  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>head <span class="token operator">=</span> <span class="token keyword">null</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>last <span class="token operator">=</span> <span class="token keyword">null</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>length <span class="token operator">=</span> <span class="token number">0</span>
-      <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="append-方法实现"><a href="#append-方法实现" class="headerlink" title="append()方法实现"></a>append()方法实现</h4><p>append追加元素有两种情况，1，链表为空。2，链表不为空</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token function">append</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">const</span> node <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span>head<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-          <span class="token keyword">this</span><span class="token punctuation">.</span>head <span class="token operator">=</span> node
-          <span class="token keyword">this</span><span class="token punctuation">.</span>last <span class="token operator">=</span> node
-        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-          <span class="token keyword">this</span><span class="token punctuation">.</span>last<span class="token punctuation">.</span>next <span class="token operator">=</span> node
-          <span class="token keyword">this</span><span class="token punctuation">.</span>last <span class="token operator">=</span> node
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>length<span class="token operator">++</span>
-      <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="insert-方法实现"><a href="#insert-方法实现" class="headerlink" title="insert()方法实现"></a>insert()方法实现</h4><p>insert插入元素时存在三种情况，1，向链表最前面插入。2，向链表尾部插入，直接调用append()方法即可。3，向链表中间插入</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token function">insert</span><span class="token punctuation">(</span><span class="token parameter">pos<span class="token punctuation">,</span> value</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token comment">// 判断位置溢出</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>pos <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">||</span> pos <span class="token operator">></span> <span class="token keyword">this</span><span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-          <span class="token keyword">return</span> <span class="token boolean">false</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">const</span> node <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>pos <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-          <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>head<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
-          <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-            node<span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>head
-            <span class="token keyword">this</span><span class="token punctuation">.</span>head <span class="token operator">=</span> node
-            <span class="token keyword">this</span><span class="token punctuation">.</span>length<span class="token operator">++</span>
-          <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>pos <span class="token operator">===</span> <span class="token keyword">this</span><span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-          <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
-        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-          <span class="token keyword">let</span> prev <span class="token operator">=</span> <span class="token keyword">null</span>
-          <span class="token keyword">let</span> current <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>head
-          <span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span>
-          <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> pos<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            prev <span class="token operator">=</span> current
-            current <span class="token operator">=</span> current<span class="token punctuation">.</span>next
-            i<span class="token operator">++</span>
-          <span class="token punctuation">&#125;</span>
-          prev<span class="token punctuation">.</span>next <span class="token operator">=</span> node
-          node<span class="token punctuation">.</span>next <span class="token operator">=</span> current
-          <span class="token keyword">this</span><span class="token punctuation">.</span>length<span class="token operator">++</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">return</span> <span class="token boolean">true</span>
-      <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="get方法实现"><a href="#get方法实现" class="headerlink" title="get方法实现"></a>get方法实现</h4><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token function">get</span><span class="token punctuation">(</span>pos<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token comment">// 判断位置溢出</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>pos <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">||</span> pos <span class="token operator">></span> <span class="token keyword">this</span><span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-          <span class="token keyword">return</span> <span class="token boolean">false</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">let</span> current <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>head
-        <span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span>
-        <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> pos<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-          current <span class="token operator">=</span> current<span class="token punctuation">.</span>next
-          i<span class="token operator">++</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">return</span> current<span class="token punctuation">.</span>item
-      <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="indexOf方法实现"><a href="#indexOf方法实现" class="headerlink" title="indexOf方法实现"></a>indexOf方法实现</h4><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">let</span> current <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>head
-        <span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span>
-        <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-          <span class="token keyword">if</span> <span class="token punctuation">(</span>current<span class="token punctuation">.</span>item <span class="token operator">===</span> value<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">return</span> i
-          <span class="token punctuation">&#125;</span>
-          current <span class="token operator">=</span> current<span class="token punctuation">.</span>next
-          i<span class="token operator">++</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span>
-      <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="removeAt方法实现"><a href="#removeAt方法实现" class="headerlink" title="removeAt方法实现"></a>removeAt方法实现</h4><p>removeAt方法与insert方法一样，存在三种情况：1，从开始移除。2，从最后移除。3，从中间移除</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token function">removeAt</span><span class="token punctuation">(</span><span class="token parameter">pos</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token comment">// 判断位置溢出</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>pos <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">||</span> pos <span class="token operator">></span> <span class="token keyword">this</span><span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-          <span class="token keyword">return</span> <span class="token boolean">false</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>pos <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-          <span class="token keyword">this</span><span class="token punctuation">.</span>head <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>head<span class="token punctuation">.</span>next
-        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-          <span class="token keyword">let</span> prev <span class="token operator">=</span> <span class="token keyword">null</span>
-          <span class="token keyword">let</span> current <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>head
-          <span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span>
-          <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> pos<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            prev <span class="token operator">=</span> current
-            current <span class="token operator">=</span> current<span class="token punctuation">.</span>next
-            i<span class="token operator">++</span>
-          <span class="token punctuation">&#125;</span>
-          prev<span class="token punctuation">.</span>next <span class="token operator">=</span> current<span class="token punctuation">.</span>next
-          <span class="token keyword">if</span> <span class="token punctuation">(</span>pos <span class="token operator">===</span> <span class="token keyword">this</span><span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>last <span class="token operator">=</span> prev
-          <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>length<span class="token operator">--</span>
-        <span class="token keyword">return</span> <span class="token boolean">true</span>
-      <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="update方法实现"><a href="#update方法实现" class="headerlink" title="update方法实现"></a>update方法实现</h4><p>update方法直接调用 removeAt方法和insert方法即可完成</p>
-<pre class="line-numbers language-none"><code class="language-none">update(pos, value) &#123;
-        let res_remove &#x3D; this.removeAt(pos)
-        let res_insert &#x3D; this.insert(pos, value)
-        return res_remove &amp;&amp; res_insert
-      &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="remove方法实现"><a href="#remove方法实现" class="headerlink" title="remove方法实现"></a>remove方法实现</h4><p>remove方法直接调用 indexOf方法和removeAt方法即可完成</p>
-<pre class="line-numbers language-none"><code class="language-none">remove(value) &#123;
-        let index&#x3D;this.indexOf(value)
-        return this.removeAt(index)
-      &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="isEmpty和size方法实现"><a href="#isEmpty和size方法实现" class="headerlink" title="isEmpty和size方法实现"></a>isEmpty和size方法实现</h4><p>这两个方法实现比较简单，代码如下</p>
-<pre class="line-numbers language-none"><code class="language-none">isEmpty() &#123;
-        return this.length &#x3D;&#x3D;&#x3D; 0
-      &#125;
-size() &#123;
-        return this.length
-      &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><pre class="line-numbers language-none"><code class="language-none">class Node &#123;
-      constructor(item) &#123;
-        this.item &#x3D; item
-        this.next &#x3D; null
-      &#125;
-    &#125;
-    class LinkedList &#123;
-      constructor() &#123;
-        this.head &#x3D; null
-        this.last &#x3D; null
-        this.length &#x3D; 0
-      &#125;
-      append(value) &#123;
-        const node &#x3D; new Node(value)
-        if (!this.head) &#123;
-          this.head &#x3D; node
-          this.last &#x3D; node
-        &#125; else &#123;
-          this.last.next &#x3D; node
-          this.last &#x3D; node
-        &#125;
-        this.length++
-      &#125;
-      insert(pos, value) &#123;
-        &#x2F;&#x2F; 判断位置溢出
-        if (pos &lt; 0 || pos &gt; this.length) &#123;
-          return false
-        &#125;
-        const node &#x3D; new Node(value)
-        if (pos &#x3D;&#x3D;&#x3D; 0) &#123;
-          node.next &#x3D; this.head
-          this.head &#x3D; node
-          this.length++
-        &#125; else if (pos &#x3D;&#x3D;&#x3D; this.length) &#123;
-          this.append(value)
-        &#125; else &#123;
-          let prev &#x3D; null
-          let current &#x3D; this.head
-          let i &#x3D; 0
-          while (i &lt; pos) &#123;
-            prev &#x3D; current
-            current &#x3D; current.next
-            i++
-          &#125;
-          prev.next &#x3D; node
-          node.next &#x3D; current
-          this.length++
-        &#125;
-        return true
-      &#125;
-      get(pos) &#123;
-        &#x2F;&#x2F; 判断位置溢出
-        if (pos &lt; 0 || pos &gt; this.length - 1) &#123;
-          return false
-        &#125;
-        let current &#x3D; this.head
-        let i &#x3D; 0
-        while (i &lt; pos) &#123;
-          current &#x3D; current.next
-          i++
-        &#125;
-        return current.item
-      &#125;
-      indexOf(value) &#123;
-        let current &#x3D; this.head
-        let i &#x3D; 0
-        while (i &lt; this.length) &#123;
-          if (current.item &#x3D;&#x3D;&#x3D; value) &#123;
-            return i
-          &#125;
-          current &#x3D; current.next
-          i++
-        &#125;
-        return -1
-      &#125;
-      update(pos, value) &#123;
-        let res_remove &#x3D; this.removeAt(pos)
-        let res_insert &#x3D; this.insert(pos, value)
-        return res_remove &amp;&amp; res_insert
-      &#125;
-      removeAt(pos) &#123;
-        &#x2F;&#x2F; 判断位置溢出
-        if (pos &lt; 0 || pos &gt; this.length - 1) &#123;
-          return false
-        &#125;
-        if (pos &#x3D;&#x3D;&#x3D; 0) &#123;
-          this.head &#x3D; this.head.next
-        &#125; else &#123;
-          let prev &#x3D; null
-          let current &#x3D; this.head
-          let i &#x3D; 0
-          while (i &lt; pos) &#123;
-            prev &#x3D; current
-            current &#x3D; current.next
-            i++
-          &#125;
-          prev.next &#x3D; current.next
-          if (pos &#x3D;&#x3D;&#x3D; this.length - 1) &#123;
-            this.last &#x3D; prev
-          &#125;
-        &#125;
-        this.length--
-        return true
-      &#125;
-      remove(value) &#123;
-        let index&#x3D;this.indexOf(value)
-        return this.removeAt(index)
-      &#125;
-      isEmpty() &#123;
-        return this.length &#x3D;&#x3D;&#x3D; 0
-      &#125;
-      size() &#123;
-        return this.length
-      &#125;
-    &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+                <h1 id="二叉搜索树优化——红黑树"><a href="#二叉搜索树优化——红黑树" class="headerlink" title="二叉搜索树优化——红黑树"></a>二叉搜索树优化——红黑树</h1><h2 id="红黑树的特点"><a href="#红黑树的特点" class="headerlink" title="红黑树的特点"></a>红黑树的特点</h2><p>特性1，所有节点都是黑色或者红色</p>
+<p>特性2，根节点是黑色</p>
+<p>特性3，每个叶子结点都是黑色的空节点（NIL节点）</p>
+<p>特性4，每个红色节点的两个子节点都是黑色（不存在从根节点到叶子节点的路径中出现连续的两个红色节点的情况）</p>
+<p>特性5，从任意节点到其叶子节点的所有路径都包含相同个数的黑色节点</p>
+<p>红黑树的例图：</p>
+<p><img src="/2022/05/06/er-cha-sou-suo-shu-you-hua-hong-hei-shu/img1.png"></p>
+<h3 id="那么问题来了，红黑树是如何通过以上特性来保持相对平衡的呢？"><a href="#那么问题来了，红黑树是如何通过以上特性来保持相对平衡的呢？" class="headerlink" title="那么问题来了，红黑树是如何通过以上特性来保持相对平衡的呢？"></a>那么问题来了，红黑树是如何通过以上特性来保持相对平衡的呢？</h3><p>首先，根据特性1,2,3，我们可以得到以下结论，对于任意从根节点到叶子节点，路径一定是形似这样的：黑——……——黑。</p>
+<p>其次，根据特性5，我们可以发现，如果一颗红黑树中从根节点到叶子节点的路径中，包含的黑色节点为3，那么路径中的最短路径是这样的： 黑——黑——黑。</p>
+<p>然后，根据特性4，我们可以发现，如果一颗红黑树中从根节点到叶子节点的路径中，包含的黑色节点为3，那么路径中的最长路径是这样的： 黑——红——黑——红——黑。</p>
+<p>所以，<strong>对于红黑树而言，最长路径不会超过最短路径的两倍</strong>，这就保证了红黑树的基本平衡（并不是像AVL树一样的完全平衡，但也是可以保证查询操作的基本高效的）。</p>
+<h2 id="红黑树的插入操作"><a href="#红黑树的插入操作" class="headerlink" title="红黑树的插入操作"></a>红黑树的插入操作</h2><h3 id="红黑树插入元素会用到的操作"><a href="#红黑树插入元素会用到的操作" class="headerlink" title="红黑树插入元素会用到的操作"></a>红黑树插入元素会用到的操作</h3><h4 id="变色"><a href="#变色" class="headerlink" title="变色"></a>变色</h4><p>在红黑树中，默认新插入的节点为红色节点。为什么是这样的呢？</p>
+<p>首先，如果插入的节点为黑色，那么无论节点被插入到哪里，都会导致被插入的路径中的黑色节点多了一个，从而违法特性5，导致红黑树要进行变化。</p>
+<p>而插入节点为红色，如果插入位置的父节点为黑色节点，那么就不需要进行任何操作了</p>
+<h4 id="左旋转"><a href="#左旋转" class="headerlink" title="左旋转"></a>左旋转</h4><p>逆时针旋转红黑树的两个节点，使得自己被自己的右子节点取代，自己成为自己右子节点的左子节点。</p>
+<p>图解如下：</p>
+<p><img src="/2022/05/06/er-cha-sou-suo-shu-you-hua-hong-hei-shu/img2.png"></p>
+<h4 id="右旋转"><a href="#右旋转" class="headerlink" title="右旋转"></a>右旋转</h4><p>顺时针旋转红黑树的两个节点，使得自己被自己的左子节点取代，自己成为自己左子节点的右子节点。</p>
+<p>图解如下：</p>
+<p><img src="/2022/05/06/er-cha-sou-suo-shu-you-hua-hong-hei-shu/img3.png"></p>
+<h3 id="红黑树的插入操作-1"><a href="#红黑树的插入操作-1" class="headerlink" title="红黑树的插入操作"></a>红黑树的插入操作</h3><p>我们设N为要插入的节点，P为父节点，U为叔父节点，G为祖父节点</p>
+<h4 id="情况一"><a href="#情况一" class="headerlink" title="情况一"></a>情况一</h4><p>当前树为一个空树，将树的根节点指向N，将N节点变色</p>
+<p>图解如下：</p>
+<p><img src="/2022/05/06/er-cha-sou-suo-shu-you-hua-hong-hei-shu/img4.png"></p>
+<h4 id="情况二"><a href="#情况二" class="headerlink" title="情况二"></a>情况二</h4><p>将P节点为黑色，将N节点直接插入即可</p>
+<p>图解如下：</p>
+<p><img src="/2022/05/06/er-cha-sou-suo-shu-you-hua-hong-hei-shu/img5.png"></p>
+<h4 id="情况三"><a href="#情况三" class="headerlink" title="情况三"></a>情况三</h4><p>P节点为红色，U节点为红色，G节点为黑色。此时，我们将P节点和U节点变为黑色，将G节点变为红色。</p>
+<p>图解如下：</p>
+<p><img src="/2022/05/06/er-cha-sou-suo-shu-you-hua-hong-hei-shu/img6.png"></p>
+<p>这种情况下可能出现以下问题：</p>
+<p>1，G节点的父节点可能也为红色节点，这时要进行递归操作。</p>
+<p>2，如果递归到根节点，使得根节点变为红色，则直接将根节点变为黑色即可（等同于每条路径黑色节点都加一）。</p>
+<h4 id="情况四"><a href="#情况四" class="headerlink" title="情况四"></a>情况四</h4><p>P节点为红色，U节点为黑色，G节点为黑色，N节点为P节点的左子节点。此时，我们将P节点转换为黑色，G节点转换为红色，以G节点为轴进行右旋转</p>
+<p>图解如下</p>
+<p><img src="/2022/05/06/er-cha-sou-suo-shu-you-hua-hong-hei-shu/img7.png"></p>
+<h4 id="情况五"><a href="#情况五" class="headerlink" title="情况五"></a>情况五</h4><p>P节点为红色，U节点为黑色，G节点为黑色，N节点为P节点的右子节点。此时，我们先以P为轴进行左旋转，然后将以P为根的子树看成新插入的节点。此时就如情况四一样了，进行情况四中的操作</p>
+<p>图解如下</p>
+<p><img src="/2022/05/06/er-cha-sou-suo-shu-you-hua-hong-hei-shu/img8.png"></p>
+<h2 id="插入元素案例"><a href="#插入元素案例" class="headerlink" title="插入元素案例"></a>插入元素案例</h2><p>我们依次向红黑树中插入10,9,8,7,6,5,4,3,2,1来实际体会一下插入操作</p>
+<h4 id="插入10节点"><a href="#插入10节点" class="headerlink" title="插入10节点"></a>插入10节点</h4><p>满足情况一，将10节点插入，然后将10节点变为黑色</p>
+<p><img src="/2022/05/06/er-cha-sou-suo-shu-you-hua-hong-hei-shu/img9.png"></p>
+<h4 id="插入9节点"><a href="#插入9节点" class="headerlink" title="插入9节点"></a>插入9节点</h4><p>满足情况二，直接插入9节点即可</p>
+<p><img src="/2022/05/06/er-cha-sou-suo-shu-you-hua-hong-hei-shu/img10.png"></p>
+<h4 id="插入8节点"><a href="#插入8节点" class="headerlink" title="插入8节点"></a>插入8节点</h4><p>满足情况四，将9节点变为黑色，10节点变为红色，然后右旋转</p>
+<p><img src="/2022/05/06/er-cha-sou-suo-shu-you-hua-hong-hei-shu/img11.png"></p>
+<h4 id="插入7节点"><a href="#插入7节点" class="headerlink" title="插入7节点"></a>插入7节点</h4><p>满足情况三，将8节点和10节点变为黑色，9节点变为红色。发现此时根节点为红色，将根节点变为黑色</p>
+<p><img src="/2022/05/06/er-cha-sou-suo-shu-you-hua-hong-hei-shu/img12.png"></p>
+<h4 id="插入6节点"><a href="#插入6节点" class="headerlink" title="插入6节点"></a>插入6节点</h4><p>满足情况三，将7节点变为黑色，8节点变为红色。然后右旋转</p>
+<p><img src="/2022/05/06/er-cha-sou-suo-shu-you-hua-hong-hei-shu/img13.png"></p>
+<h4 id="插入5节点"><a href="#插入5节点" class="headerlink" title="插入5节点"></a>插入5节点</h4><p>满足情况三，将6节点和8节点变为黑色，7节点变为红色</p>
+<p><img src="/2022/05/06/er-cha-sou-suo-shu-you-hua-hong-hei-shu/img14.png"></p>
+<h4 id="插入4节点"><a href="#插入4节点" class="headerlink" title="插入4节点"></a>插入4节点</h4><p>满足情况四，将5节点变为黑色，6节点变为红色，然后右旋转</p>
+<p><img src="/2022/05/06/er-cha-sou-suo-shu-you-hua-hong-hei-shu/img15.png"></p>
+<h4 id="插入3节点"><a href="#插入3节点" class="headerlink" title="插入3节点"></a>插入3节点</h4><p>满足情况三，将4节点和6节点变为黑色，5节点变为红色。发现5节点的父节点为红色。这时满足情况四，将7节点变为黑色，9节点变为红色，然后右旋转</p>
+<p><img src="/2022/05/06/er-cha-sou-suo-shu-you-hua-hong-hei-shu/img16.png"></p>
+<h4 id="插入2节点"><a href="#插入2节点" class="headerlink" title="插入2节点"></a>插入2节点</h4><p>满足情况四，将3节点变为黑色，4节点变为红色，然后右旋转</p>
+<p><img src="/2022/05/06/er-cha-sou-suo-shu-you-hua-hong-hei-shu/img17.png"></p>
+<h4 id="插入1节点"><a href="#插入1节点" class="headerlink" title="插入1节点"></a>插入1节点</h4><p>满足情况三，将2节点和4节点变为黑色，3节点变为红色。发现3节点的父节点为红色。这时满足情况三，将5节点和9节点变为黑色，7节点变为红色。发现根节点7为红色，直接将7变为黑色</p>
+<p><img src="/2022/05/06/er-cha-sou-suo-shu-you-hua-hong-hei-shu/img18.png"></p>
+<p>现在这颗红黑树的插入操作已经完成了，我们可以发现它符合红黑树的所有特性（省略了NIL节点）。</p>
 
                 
             </div>
@@ -782,7 +544,7 @@ size() &#123;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://asoaringfordream.github.io/2022/05/04/es6-feng-zhuang-dan-xiang-lian-biao/">https://asoaringfordream.github.io/2022/05/04/es6-feng-zhuang-dan-xiang-lian-biao/</a>
+                    <a href="https://asoaringfordream.github.io/2022/05/06/er-cha-sou-suo-shu-you-hua-hong-hei-shu/">https://asoaringfordream.github.io/2022/05/06/er-cha-sou-suo-shu-you-hua-hong-hei-shu/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -832,8 +594,8 @@ size() &#123;
                                     <span class="chip bg-color">数据结构</span>
                                 </a>
                             
-                                <a href="/tags/%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8/">
-                                    <span class="chip bg-color">单向链表</span>
+                                <a href="/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/">
+                                    <span class="chip bg-color">二叉搜索树</span>
                                 </a>
                             
                         </div>
@@ -1273,29 +1035,92 @@ size() &#123;
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/05/04/es6-feng-zhuang-shuang-xiang-lian-biao/">
+                <a href="/2022/05/06/er-cha-sou-suo-shu-you-hua-hong-hei-shu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="ES6封装双向链表">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="二叉搜索树优化——红黑树">
                         
-                        <span class="card-title">ES6封装双向链表</span>
+                        <span class="card-title">二叉搜索树优化——红黑树</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            使用JavaScript-ES6封装双向链表
+                            简单介绍红黑树保持基本平衡的原理，插入操作原理，最后说一个红黑树插入的案例
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-05-04
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-06
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
+                                    数据结构
+                                </a>
+                            
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/JavaScript/">
+                        <span class="chip bg-color">JavaScript</span>
+                    </a>
+                    
+                    <a href="/tags/ES6/">
+                        <span class="chip bg-color">ES6</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                        <span class="chip bg-color">数据结构</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/">
+                        <span class="chip bg-color">二叉搜索树</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/05/05/es6-feng-zhuang-ping-heng-er-cha-shu-binarysearchtree/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="ES6封装二叉搜索树（BinarySearchTree）">
+                        
+                        <span class="card-title">ES6封装二叉搜索树（BinarySearchTree）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            使用JavaScript-ES6封装二叉搜索树（BinarySearchTree）
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-05
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1323,57 +1148,8 @@ size() &#123;
                         <span class="chip bg-color">数据结构</span>
                     </a>
                     
-                    <a href="/tags/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/">
-                        <span class="chip bg-color">双向链表</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2022/05/03/hexo-bo-ke-fa-biao-wen-zhang/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Hexo博客发表文章">
-                        
-                        <span class="card-title">Hexo博客发表文章</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            Hexo博客发表文章
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-03
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Hexo/" class="post-category">
-                                    Hexo
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Hexo/">
-                        <span class="chip bg-color">Hexo</span>
+                    <a href="/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/">
+                        <span class="chip bg-color">二叉搜索树</span>
                     </a>
                     
                 </div>

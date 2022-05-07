@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>二叉搜索树优化——红黑树</title>
+      <link href="/2022/05/06/er-cha-sou-suo-shu-you-hua-hong-hei-shu/"/>
+      <url>/2022/05/06/er-cha-sou-suo-shu-you-hua-hong-hei-shu/</url>
+      
+        <content type="html"><![CDATA[<h1 id="二叉搜索树优化——红黑树"><a href="#二叉搜索树优化——红黑树" class="headerlink" title="二叉搜索树优化——红黑树"></a>二叉搜索树优化——红黑树</h1><h2 id="红黑树的特点"><a href="#红黑树的特点" class="headerlink" title="红黑树的特点"></a>红黑树的特点</h2><p>特性1，所有节点都是黑色或者红色</p><p>特性2，根节点是黑色</p><p>特性3，每个叶子结点都是黑色的空节点（NIL节点）</p><p>特性4，每个红色节点的两个子节点都是黑色（不存在从根节点到叶子节点的路径中出现连续的两个红色节点的情况）</p><p>特性5，从任意节点到其叶子节点的所有路径都包含相同个数的黑色节点</p><p>红黑树的例图：</p><p><img src="/2022/05/06/er-cha-sou-suo-shu-you-hua-hong-hei-shu/img1.png"></p><h3 id="那么问题来了，红黑树是如何通过以上特性来保持相对平衡的呢？"><a href="#那么问题来了，红黑树是如何通过以上特性来保持相对平衡的呢？" class="headerlink" title="那么问题来了，红黑树是如何通过以上特性来保持相对平衡的呢？"></a>那么问题来了，红黑树是如何通过以上特性来保持相对平衡的呢？</h3><p>首先，根据特性1,2,3，我们可以得到以下结论，对于任意从根节点到叶子节点，路径一定是形似这样的：黑——……——黑。</p><p>其次，根据特性5，我们可以发现，如果一颗红黑树中从根节点到叶子节点的路径中，包含的黑色节点为3，那么路径中的最短路径是这样的： 黑——黑——黑。</p><p>然后，根据特性4，我们可以发现，如果一颗红黑树中从根节点到叶子节点的路径中，包含的黑色节点为3，那么路径中的最长路径是这样的： 黑——红——黑——红——黑。</p><p>所以，<strong>对于红黑树而言，最长路径不会超过最短路径的两倍</strong>，这就保证了红黑树的基本平衡（并不是像AVL树一样的完全平衡，但也是可以保证查询操作的基本高效的）。</p><h2 id="红黑树的插入操作"><a href="#红黑树的插入操作" class="headerlink" title="红黑树的插入操作"></a>红黑树的插入操作</h2><h3 id="红黑树插入元素会用到的操作"><a href="#红黑树插入元素会用到的操作" class="headerlink" title="红黑树插入元素会用到的操作"></a>红黑树插入元素会用到的操作</h3><h4 id="变色"><a href="#变色" class="headerlink" title="变色"></a>变色</h4><p>在红黑树中，默认新插入的节点为红色节点。为什么是这样的呢？</p><p>首先，如果插入的节点为黑色，那么无论节点被插入到哪里，都会导致被插入的路径中的黑色节点多了一个，从而违法特性5，导致红黑树要进行变化。</p><p>而插入节点为红色，如果插入位置的父节点为黑色节点，那么就不需要进行任何操作了</p><h4 id="左旋转"><a href="#左旋转" class="headerlink" title="左旋转"></a>左旋转</h4><p>逆时针旋转红黑树的两个节点，使得自己被自己的右子节点取代，自己成为自己右子节点的左子节点。</p><p>图解如下：</p><p><img src="/2022/05/06/er-cha-sou-suo-shu-you-hua-hong-hei-shu/img2.png"></p><h4 id="右旋转"><a href="#右旋转" class="headerlink" title="右旋转"></a>右旋转</h4><p>顺时针旋转红黑树的两个节点，使得自己被自己的左子节点取代，自己成为自己左子节点的右子节点。</p><p>图解如下：</p><p><img src="/2022/05/06/er-cha-sou-suo-shu-you-hua-hong-hei-shu/img3.png"></p><h3 id="红黑树的插入操作-1"><a href="#红黑树的插入操作-1" class="headerlink" title="红黑树的插入操作"></a>红黑树的插入操作</h3><p>我们设N为要插入的节点，P为父节点，U为叔父节点，G为祖父节点</p><h4 id="情况一"><a href="#情况一" class="headerlink" title="情况一"></a>情况一</h4><p>当前树为一个空树，将树的根节点指向N，将N节点变色</p><p>图解如下：</p><p><img src="/2022/05/06/er-cha-sou-suo-shu-you-hua-hong-hei-shu/img4.png"></p><h4 id="情况二"><a href="#情况二" class="headerlink" title="情况二"></a>情况二</h4><p>将P节点为黑色，将N节点直接插入即可</p><p>图解如下：</p><p><img src="/2022/05/06/er-cha-sou-suo-shu-you-hua-hong-hei-shu/img5.png"></p><h4 id="情况三"><a href="#情况三" class="headerlink" title="情况三"></a>情况三</h4><p>P节点为红色，U节点为红色，G节点为黑色。此时，我们将P节点和U节点变为黑色，将G节点变为红色。</p><p>图解如下：</p><p><img src="/2022/05/06/er-cha-sou-suo-shu-you-hua-hong-hei-shu/img6.png"></p><p>这种情况下可能出现以下问题：</p><p>1，G节点的父节点可能也为红色节点，这时要进行递归操作。</p><p>2，如果递归到根节点，使得根节点变为红色，则直接将根节点变为黑色即可（等同于每条路径黑色节点都加一）。</p><h4 id="情况四"><a href="#情况四" class="headerlink" title="情况四"></a>情况四</h4><p>P节点为红色，U节点为黑色，G节点为黑色，N节点为P节点的左子节点。此时，我们将P节点转换为黑色，G节点转换为红色，以G节点为轴进行右旋转</p><p>图解如下</p><p><img src="/2022/05/06/er-cha-sou-suo-shu-you-hua-hong-hei-shu/img7.png"></p><h4 id="情况五"><a href="#情况五" class="headerlink" title="情况五"></a>情况五</h4><p>P节点为红色，U节点为黑色，G节点为黑色，N节点为P节点的右子节点。此时，我们先以P为轴进行左旋转，然后将以P为根的子树看成新插入的节点。此时就如情况四一样了，进行情况四中的操作</p><p>图解如下</p><p><img src="/2022/05/06/er-cha-sou-suo-shu-you-hua-hong-hei-shu/img8.png"></p><h2 id="插入元素案例"><a href="#插入元素案例" class="headerlink" title="插入元素案例"></a>插入元素案例</h2><p>我们依次向红黑树中插入10,9,8,7,6,5,4,3,2,1来实际体会一下插入操作</p><h4 id="插入10节点"><a href="#插入10节点" class="headerlink" title="插入10节点"></a>插入10节点</h4><p>满足情况一，将10节点插入，然后将10节点变为黑色</p><p><img src="/2022/05/06/er-cha-sou-suo-shu-you-hua-hong-hei-shu/img9.png"></p><h4 id="插入9节点"><a href="#插入9节点" class="headerlink" title="插入9节点"></a>插入9节点</h4><p>满足情况二，直接插入9节点即可</p><p><img src="/2022/05/06/er-cha-sou-suo-shu-you-hua-hong-hei-shu/img10.png"></p><h4 id="插入8节点"><a href="#插入8节点" class="headerlink" title="插入8节点"></a>插入8节点</h4><p>满足情况四，将9节点变为黑色，10节点变为红色，然后右旋转</p><p><img src="/2022/05/06/er-cha-sou-suo-shu-you-hua-hong-hei-shu/img11.png"></p><h4 id="插入7节点"><a href="#插入7节点" class="headerlink" title="插入7节点"></a>插入7节点</h4><p>满足情况三，将8节点和10节点变为黑色，9节点变为红色。发现此时根节点为红色，将根节点变为黑色</p><p><img src="/2022/05/06/er-cha-sou-suo-shu-you-hua-hong-hei-shu/img12.png"></p><h4 id="插入6节点"><a href="#插入6节点" class="headerlink" title="插入6节点"></a>插入6节点</h4><p>满足情况三，将7节点变为黑色，8节点变为红色。然后右旋转</p><p><img src="/2022/05/06/er-cha-sou-suo-shu-you-hua-hong-hei-shu/img13.png"></p><h4 id="插入5节点"><a href="#插入5节点" class="headerlink" title="插入5节点"></a>插入5节点</h4><p>满足情况三，将6节点和8节点变为黑色，7节点变为红色</p><p><img src="/2022/05/06/er-cha-sou-suo-shu-you-hua-hong-hei-shu/img14.png"></p><h4 id="插入4节点"><a href="#插入4节点" class="headerlink" title="插入4节点"></a>插入4节点</h4><p>满足情况四，将5节点变为黑色，6节点变为红色，然后右旋转</p><p><img src="/2022/05/06/er-cha-sou-suo-shu-you-hua-hong-hei-shu/img15.png"></p><h4 id="插入3节点"><a href="#插入3节点" class="headerlink" title="插入3节点"></a>插入3节点</h4><p>满足情况三，将4节点和6节点变为黑色，5节点变为红色。发现5节点的父节点为红色。这时满足情况四，将7节点变为黑色，9节点变为红色，然后右旋转</p><p><img src="/2022/05/06/er-cha-sou-suo-shu-you-hua-hong-hei-shu/img16.png"></p><h4 id="插入2节点"><a href="#插入2节点" class="headerlink" title="插入2节点"></a>插入2节点</h4><p>满足情况四，将3节点变为黑色，4节点变为红色，然后右旋转</p><p><img src="/2022/05/06/er-cha-sou-suo-shu-you-hua-hong-hei-shu/img17.png"></p><h4 id="插入1节点"><a href="#插入1节点" class="headerlink" title="插入1节点"></a>插入1节点</h4><p>满足情况三，将2节点和4节点变为黑色，3节点变为红色。发现3节点的父节点为红色。这时满足情况三，将5节点和9节点变为黑色，7节点变为红色。发现根节点7为红色，直接将7变为黑色</p><p><img src="/2022/05/06/er-cha-sou-suo-shu-you-hua-hong-hei-shu/img18.png"></p><p>现在这颗红黑树的插入操作已经完成了，我们可以发现它符合红黑树的所有特性（省略了NIL节点）。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JavaScript </tag>
+            
+            <tag> ES6 </tag>
+            
+            <tag> 数据结构 </tag>
+            
+            <tag> 二叉搜索树 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ES6封装二叉搜索树（BinarySearchTree）</title>
       <link href="/2022/05/05/es6-feng-zhuang-ping-heng-er-cha-shu-binarysearchtree/"/>
       <url>/2022/05/05/es6-feng-zhuang-ping-heng-er-cha-shu-binarysearchtree/</url>
