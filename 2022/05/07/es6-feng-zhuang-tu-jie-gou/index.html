@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hexo博客的Matery主题的个性化配置, Paper Plane">
-    <meta name="description" content="Hexo博客的Matery主题的个性化配置">
+    <meta name="keywords" content="ES6封装图结构, Paper Plane">
+    <meta name="description" content="使用JavaScript-ES6封装图结构">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -28,7 +28,7 @@
     </style>
 
 
-    <title>Hexo博客的Matery主题的个性化配置 | Paper Plane</title>
+    <title>ES6封装图结构 | Paper Plane</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -255,12 +255,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hexo博客的Matery主题的个性化配置</h1>
+                    <h1 class="description center-align post-title">ES6封装图结构</h1>
                 </div>
             </div>
         </div>
@@ -376,16 +376,20 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Hexo/">
-                                <span class="chip bg-color">Hexo</span>
+                            <a href="/tags/JavaScript/">
+                                <span class="chip bg-color">JavaScript</span>
                             </a>
                         
-                            <a href="/tags/Matery/">
-                                <span class="chip bg-color">Matery</span>
+                            <a href="/tags/ES6/">
+                                <span class="chip bg-color">ES6</span>
                             </a>
                         
-                            <a href="/tags/%E4%B8%AA%E6%80%A7%E5%8C%96/">
-                                <span class="chip bg-color">个性化</span>
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                                <span class="chip bg-color">数据结构</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%9B%BE/">
+                                <span class="chip bg-color">图</span>
                             </a>
                         
                     </div>
@@ -396,8 +400,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Hexo/" class="post-category">
-                                Hexo
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
+                                数据结构
                             </a>
                         
                     </div>
@@ -409,28 +413,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-05-02
+                    2022-05-07
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-05-03
+                    2022-05-08
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    1.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    5 分
                 </div>
                 
 
@@ -453,140 +457,182 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Hexo博客的Matery主题的个性化配置"><a href="#Hexo博客的Matery主题的个性化配置" class="headerlink" title="Hexo博客的Matery主题的个性化配置"></a>Hexo博客的Matery主题的个性化配置</h1><h2 id="一、Hexo博客的基本设置"><a href="#一、Hexo博客的基本设置" class="headerlink" title="一、Hexo博客的基本设置"></a>一、Hexo博客的基本设置</h2><h3 id="1-1设置标题与副标题"><a href="#1-1设置标题与副标题" class="headerlink" title="1.1设置标题与副标题"></a>1.1设置标题与副标题</h3><p>在hexo根目录中的_config.yml文件中找到以下内容。其中，title对应网站的标题，subtitle对应副标题，description后面可以加上对网站的一些描述，keywords是网站的关键字，author对应作者的署名，language对应网站的语言，默认值为en。</p>
-<pre class="line-numbers language-none"><code class="language-none"># Site
-title: Paper Plane
-subtitle: &#39;Paper Plane&#39;
-description: &#39;&#39;
-keywords:
-author: Paper Plane #博客作者署名 文章没有设置author时的默认值
-language: zh-CN<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <h1 id="ES6封装图结构"><a href="#ES6封装图结构" class="headerlink" title="ES6封装图结构"></a>ES6封装图结构</h1><h2 id="什么是图结构？"><a href="#什么是图结构？" class="headerlink" title="什么是图结构？"></a>什么是图结构？</h2><p>图结构就是顶点与边的集合。</p>
+<p>在现实生活中，也有很多图结构的例子，比如北京市地铁图：</p>
+<p><img src="/2022/05/07/es6-feng-zhuang-tu-jie-gou/img1.png"></p>
+<p>在地铁线路图中，每个站点就是图的顶点，连接站点之间的线路就是边。</p>
+<h2 id="图结构的封装"><a href="#图结构的封装" class="headerlink" title="图结构的封装"></a>图结构的封装</h2><p>图结构的封装会使用字典和队列结构，详情见<a target="_blank" rel="noopener" href="http://localhost:4000/2022/05/07/es6-feng-zhuang-zhan-dui-lie-zi-dian/">ES6封装栈,队列,字典 | Paper Plane</a></p>
+<p>我们采用邻接表表示法。</p>
+<p>主要函数如下：</p>
+<p>addVertex(v)：添加节点</p>
+<p>addEdge(v_start, v_end)：添加边</p>
+<p>toString()：转换为字符串</p>
+<p>_BFS(v_start)：广度优先搜索</p>
+<p>_DFS(v_start)：深度优先搜索</p>
+<h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">class</span> <span class="token class-name">Graph</span> <span class="token punctuation">&#123;</span>
+      <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>vertexes <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token comment">//顶点集合</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>edges <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Dictionay</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">//边</span>
+      <span class="token punctuation">&#125;</span>
+      <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="1-2设置主题和绑定git"><a href="#1-2设置主题和绑定git" class="headerlink" title="1.2设置主题和绑定git"></a>1.2设置主题和绑定git</h3><ul>
-<li>下载主题——在根目录中选择进入themes目录下使用 git clone 命令下载主题 格式为 git clone +主题地址 下面以Matery为例</li>
-</ul>
-<pre class="line-numbers language-git" data-language="git"><code class="language-git">git clone https:&#x2F;&#x2F;github.com&#x2F;blinkfox&#x2F;hexo-theme-matery.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<ul>
-<li>设置主题——仍是在hexo根目录中的_config.yml文件中找到一下内容 将themes改为自己的主题即可</li>
-</ul>
-<pre class="line-numbers language-none"><code class="language-none"># Extensions
-## Plugins: https:&#x2F;&#x2F;hexo.io&#x2F;plugins&#x2F;
-## Themes: https:&#x2F;&#x2F;hexo.io&#x2F;themes&#x2F;
-theme: hexo-theme-matery<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<ul>
-<li>绑定git仓库——仍是在hexo根目录中的_config.yml文件中 添加以下内容 repo对应自己的git仓库名<strong>注意，仓库名称必须为自己GitHub用户名.github.io的格式</strong></li>
-</ul>
-<pre class="line-numbers language-none"><code class="language-none">deploy:
-  type: git
-  repo: https:&#x2F;&#x2F;github.com&#x2F;ASoaringForDream&#x2F;ASoaringForDream.github.io.git
-  branch: master<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="addVertex-v-函数实现"><a href="#addVertex-v-函数实现" class="headerlink" title="addVertex(v)函数实现"></a>addVertex(v)函数实现</h3><p>如果点已经存在，则返回false，否则，将顶点加入顶点集合，初始化该顶点的邻接表，返回true。</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 添加顶点</span>
+      <span class="token function">addVertex</span><span class="token punctuation">(</span><span class="token parameter">v</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> item <span class="token keyword">of</span> <span class="token keyword">this</span><span class="token punctuation">.</span>vertexes<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span>item <span class="token operator">===</span> v<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>vertexes<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>edges<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span>
+      <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<ul>
-<li>上传到git——在hexo根目录下执行以下命令即可</li>
-</ul>
-<pre class="line-numbers language-none"><code class="language-none">hexo d<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="addEdge-v-start-v-end-函数实现"><a href="#addEdge-v-start-v-end-函数实现" class="headerlink" title="addEdge(v_start, v_end)函数实现"></a>addEdge(v_start, v_end)函数实现</h3><p>判断判断两个顶点是否都存在，如果有一个顶点不存在，则返回false。反之，判断边是否重复，重复，返回false，不重复，加入边。</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">//添加边</span>
+      <span class="token function">addEdge</span><span class="token punctuation">(</span><span class="token parameter">v_start<span class="token punctuation">,</span> v_end</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">let</span> flag <span class="token operator">=</span> <span class="token number">0</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> item <span class="token keyword">of</span> <span class="token keyword">this</span><span class="token punctuation">.</span>vertexes<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span>item <span class="token operator">===</span> v_start<span class="token punctuation">)</span> flag<span class="token operator">++</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span>item <span class="token operator">===</span> v_end<span class="token punctuation">)</span> flag<span class="token operator">++</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span>flag <span class="token operator">===</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">break</span>
+          <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>flag <span class="token operator">===</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+          <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> item <span class="token keyword">of</span> <span class="token keyword">this</span><span class="token punctuation">.</span>edges<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>v_start<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>item <span class="token operator">===</span> v_end<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+              <span class="token keyword">return</span> <span class="token boolean">false</span>
+            <span class="token punctuation">&#125;</span>
+          <span class="token punctuation">&#125;</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span>edges<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>v_start<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>v_end<span class="token punctuation">)</span>
+          <span class="token comment">// 无向图</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span>edges<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>v_end<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>v_start<span class="token punctuation">)</span>
+          <span class="token keyword">return</span> <span class="token boolean">true</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+          <span class="token keyword">return</span> <span class="token boolean">false</span>
+        <span class="token punctuation">&#125;</span>
+      <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="1-3自定义添加插件"><a href="#1-3自定义添加插件" class="headerlink" title="1.3自定义添加插件"></a>1.3自定义添加插件</h3><h4 id="1-3-1代码高亮插件"><a href="#1-3-1代码高亮插件" class="headerlink" title="1.3.1代码高亮插件"></a>1.3.1代码高亮插件</h4><p>​        Matery有自己的代码高亮功能，如果不太喜欢可以自己设置为其他的</p>
-<p>​        在hexo根目录下执行</p>
-<pre class="line-numbers language-none"><code class="language-none">npm i -S hexo-prism-plugin<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="toString-函数实现"><a href="#toString-函数实现" class="headerlink" title="toString()函数实现"></a>toString()函数实现</h3><p>遍历每个顶点，然后对每个顶点遍历每一条边，将字符串拼接返回</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 转换为字符串</span>
+      <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">let</span> str <span class="token operator">=</span> <span class="token string">''</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> item <span class="token keyword">of</span> <span class="token keyword">this</span><span class="token punctuation">.</span>vertexes<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+          str <span class="token operator">=</span> str <span class="token operator">+</span> item <span class="token operator">+</span> <span class="token string">' -> '</span>
+          <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token keyword">of</span> <span class="token keyword">this</span><span class="token punctuation">.</span>edges<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            str <span class="token operator">+=</span> i <span class="token operator">+</span> <span class="token string">' '</span>
+          <span class="token punctuation">&#125;</span>
+          str <span class="token operator">+=</span> <span class="token string">'\n'</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> str
+      <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>​        在hexo根目录中的_config.yml文件中找到以下内容关闭原有的代码高亮</p>
-<pre class="line-numbers language-none"><code class="language-none">highlight:
-  enable: false
-  line_number: true
-  auto_detect: false
-  tab_replace: &#39;&#39;
-  wrap: true
-  hljs: false<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="BFS-v-start-广度优先搜索函数实现"><a href="#BFS-v-start-广度优先搜索函数实现" class="headerlink" title="_BFS(v_start)广度优先搜索函数实现"></a>_BFS(v_start)广度优先搜索函数实现</h3><p>广度优先遍历：先访问开始节点，然后访问与开始节点相连的节点。访问完所有的相连节点后，访问与其相连节点相连的所有节点……直至所有节点都被访问完</p>
+<p>例图（A为开始节点）：</p>
+<p><img src="/2022/05/07/es6-feng-zhuang-tu-jie-gou/img2.png"></p>
+<h4 id="实现原理："><a href="#实现原理：" class="headerlink" title="实现原理："></a>实现原理：</h4><p>首先，我们给每一个顶点一个表示，这里我们给顶点颜色，白色表示该节点未被访问，黑色表示该节点已被访问。</p>
+<p>初始化颜色：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 初始化颜色</span>
+      <span class="token function">initColor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">let</span> colors <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> item <span class="token keyword">of</span> <span class="token keyword">this</span><span class="token punctuation">.</span>vertexes<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+          colors<span class="token punctuation">[</span>item<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'white'</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> colors
+      <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>​        在同一文件中添加一下代码设置自己的高亮</p>
-<pre class="line-numbers language-none"><code class="language-none">prism_plugin:
-  mode: &#39;preprocess&#39;    # realtime&#x2F;preprocess
-  theme: &#39;tomorrow&#39;
-  line_number: false    # default false
-  custom_css:<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>广度优先搜索可以利用队列来实现。实现思路如下：</p>
+<p>1，将初始顶点加入队列，如果队列非空，则循环做以下操作</p>
+<p>2，弹出队列的第一个顶点。然后，如果该顶点为白色，访问该顶点，将与该顶点相连的所有白色的节点加入队列，然后将该顶点置为黑色。如果该顶点为黑色就不做任何操作</p>
+<p>代码如下：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 广度优先搜索</span>
+      <span class="token function">_BFS</span><span class="token punctuation">(</span><span class="token parameter">v_start</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">let</span> flag <span class="token operator">=</span> <span class="token boolean">false</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> item <span class="token keyword">of</span> <span class="token keyword">this</span><span class="token punctuation">.</span>vertexes<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span>item <span class="token operator">===</span> v_start<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            flag <span class="token operator">=</span> <span class="token boolean">true</span>
+          <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>flag<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+          <span class="token keyword">return</span> <span class="token boolean">false</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">let</span> query <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Query</span>
+        query<span class="token punctuation">.</span><span class="token function">enqueue</span><span class="token punctuation">(</span>v_start<span class="token punctuation">)</span>
+        <span class="token keyword">let</span> colors <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">initColor</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>query<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token boolean">false</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+          <span class="token keyword">let</span> current <span class="token operator">=</span> query<span class="token punctuation">.</span><span class="token function">dequeue</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span>colors<span class="token punctuation">[</span>current<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">'black'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">continue</span>
+          <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>colors<span class="token punctuation">[</span>current<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">'white'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> item <span class="token keyword">of</span> <span class="token keyword">this</span><span class="token punctuation">.</span>edges<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>current<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+              <span class="token keyword">if</span> <span class="token punctuation">(</span>colors<span class="token punctuation">[</span>item<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">'white'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                query<span class="token punctuation">.</span><span class="token function">enqueue</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+              <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">&#125;</span>
+            <span class="token comment">// console.log(query.toString());</span>
+            colors<span class="token punctuation">[</span>current<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'black'</span>
+          <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+      <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="1-3-2字符统计插件"><a href="#1-3-2字符统计插件" class="headerlink" title="1.3.2字符统计插件"></a>1.3.2字符统计插件</h4><p>​        为文章添加字符统计的插件。</p>
-<p>​        在hexo根目录下执行</p>
-<pre class="line-numbers language-none"><code class="language-none">npm i -S hexo-wordcount<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>上述图例中对应的运行结果：</p>
+<p><img src="/2022/05/07/es6-feng-zhuang-tu-jie-gou/img3.png"></p>
+<h3 id="DFS-v-start-深度优先搜索函数实现"><a href="#DFS-v-start-深度优先搜索函数实现" class="headerlink" title="_DFS(v_start)深度优先搜索函数实现"></a>_DFS(v_start)深度优先搜索函数实现</h3><p>深度优先搜索：访问初始节点，对初始节点的一个相连节点进行深度优先搜索。</p>
+<p>例图（A为开始节点）：</p>
+<p><img src="/2022/05/07/es6-feng-zhuang-tu-jie-gou/img4.png"></p>
+<h4 id="实现原理：-1"><a href="#实现原理：-1" class="headerlink" title="实现原理："></a>实现原理：</h4><p>首先，与广度优先搜索，我们给每一个顶点一个表示，这里我们给顶点颜色，白色表示该节点未被访问，黑色表示该节点已被访问。</p>
+<p>深度优先搜索可以利用栈来实现。实现思路如下：</p>
+<p>1，将初始顶点加入栈，如果栈非空，则循环做以下操作</p>
+<p>2，弹出栈的第一个顶点。然后，如果该顶点为白色，访问该顶点，将该顶点置为黑色，然后将与该顶点相连的所有白色的节点加入栈。如果该顶点为黑色就不做任何操作。</p>
+<p>当然，我的实现代码是用递归来做的，上述实现原理用栈来解释比较好理解。为什么用递归可以来代替栈呢？很简单，我们很多语言，不只是JavaScript，这些语言底层在实现函数的嵌套调用时，就是用栈来实现的。</p>
+<p>举个栗子，对于如下代码：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'aaa'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">function</span> <span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+      <span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'bbb'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">function</span> <span class="token function">c</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+      <span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'ccc'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token function">c</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>​        在主题下的_config.yml配置文件中添加以下代码 <strong>在Matery主题中这部分代码已经存在找到并修改为true即可 重复会报错</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">postInfo:
-  date: true # 发布日期
-  update: true # 更新日期
-  wordCount: true # 文章字数统计
-  totalCount: true # 站点总文章字数
-  min2read: true # 文章阅读时长
-  readCount: true # 文章阅读次数<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>他的底层是这样的：</p>
+<p><img src="/2022/05/07/es6-feng-zhuang-tu-jie-gou/img5.png"></p>
+<p>结果就是这样的：</p>
+<p><img src="/2022/05/07/es6-feng-zhuang-tu-jie-gou/img6.png"></p>
+<p>所以我们的最终代码是这样的：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token function">_DFS</span><span class="token punctuation">(</span><span class="token parameter">v_start</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">let</span> flag <span class="token operator">=</span> <span class="token boolean">false</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> item <span class="token keyword">of</span> <span class="token keyword">this</span><span class="token punctuation">.</span>vertexes<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span>item <span class="token operator">===</span> v_start<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            flag <span class="token operator">=</span> <span class="token boolean">true</span>
+          <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>flag<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+          <span class="token keyword">return</span> <span class="token boolean">false</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">let</span> colors <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">initColor</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">dFS</span><span class="token punctuation">(</span>v_start<span class="token punctuation">,</span> colors<span class="token punctuation">)</span>
+      <span class="token punctuation">&#125;</span>
+      <span class="token function">dFS</span><span class="token punctuation">(</span><span class="token parameter">v<span class="token punctuation">,</span> colors</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>colors<span class="token punctuation">[</span>v<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">'white'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+          console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          colors<span class="token punctuation">[</span>v<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'black'</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> item <span class="token keyword">of</span> <span class="token keyword">this</span><span class="token punctuation">.</span>edges<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span>colors<span class="token punctuation">[</span>item<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">'white'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">dFS</span><span class="token punctuation">(</span>item<span class="token punctuation">,</span> colors<span class="token punctuation">)</span>
+          <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+      <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="1-3-3搜索功能插件"><a href="#1-3-3搜索功能插件" class="headerlink" title="1.3.3搜索功能插件"></a>1.3.3搜索功能插件</h4><p>​        为博客添加搜索功能</p>
-<p>​        在hexo根目录下执行</p>
-<pre class="line-numbers language-none"><code class="language-none">npm i hexo-generator-search -S<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>​        在hexo根目录中的_config.yml文件中添加以下内容</p>
-<pre class="line-numbers language-none"><code class="language-none"># 中文搜索功能
-search:
-  path: search.xml
-  field: post<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="二、Matery主题的个性化配置"><a href="#二、Matery主题的个性化配置" class="headerlink" title="二、Matery主题的个性化配置"></a>二、Matery主题的个性化配置</h2><h3 id="2-1修改主题颜色"><a href="#2-1修改主题颜色" class="headerlink" title="2.1修改主题颜色"></a>2.1修改主题颜色</h3><p>不知道为什么默认的主题颜色是绿色（QAQ）不喜欢的话可以更改它的主题颜色</p>
-<p>在主题文件的 /source/css/matery.css 文件中找到并修改以下内容。vscode的可以通过快捷键Ctrl+F查找（其余软件我没用过可能快捷键都一样）。这里我将背景颜色设置为了浅蓝色，推荐一个渐变色网址 <a target="_blank" rel="noopener" href="https://webkul.github.io/coolhue/">Gradient Colors Collection Palette - CoolHue 2.0 (webkul.github.io)</a></p>
-<pre class="line-numbers language-none"><code class="language-none">.bg-color &#123;
-    background-image: linear-gradient(to right, #90F7EC 0%, #32CCBC 100%);
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="2-2修改打赏的二维码"><a href="#2-2修改打赏的二维码" class="headerlink" title="2.2修改打赏的二维码"></a>2.2修改打赏的二维码</h3><p>这里建议将主题文件\source\medias\reward目录下的图片更换为自己的图片就好了，注意名字要和他一致</p>
-<h3 id="2-3修改-banner-图和文章特色图"><a href="#2-3修改-banner-图和文章特色图" class="headerlink" title="2.3修改 banner 图和文章特色图"></a>2.3修改 banner 图和文章特色图</h3><p>在 /source/medias/banner 文件夹中更换你喜欢的 banner 图片，主题代码中是每天动态切换一张。当然你可以修改他的源码，让他变成你自己喜欢切换逻辑，banner 切换的代码位置在 /layout/_partial/bg-cover-content.ejs 文件的 代码中：</p>
-<pre class="line-numbers language-none"><code class="language-none">$(&#39;.bg-cover&#39;).css(&#39;background-image&#39;, &#39;url(&#x2F;medias&#x2F;banner&#x2F;&#39; + new Date().getDay() + &#39;.jpg)&#39;);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>将其中的getDay()改成getHours()即可变成每小时动态切换</p>
-<h3 id="2-4修改博客中的连接"><a href="#2-4修改博客中的连接" class="headerlink" title="2.4修改博客中的连接"></a>2.4修改博客中的连接</h3><p>​        在主题目录中的_config.yml文件中找到并修改以下内容为自己的连接即可</p>
-<pre class="line-numbers language-none"><code class="language-none">socialLink:
-  github:  https:&#x2F;&#x2F;github.com&#x2F;ASoaringForDream
-  email: 210923729@qq.com
-  facebook: # https:&#x2F;&#x2F;www.facebook.com&#x2F;xxx
-  twitter: # https:&#x2F;&#x2F;twitter.com&#x2F;xxx
-  qq: 210923729
-  weibo: # https:&#x2F;&#x2F;weibo.com&#x2F;xxx
-  zhihu: # https:&#x2F;&#x2F;www.zhihu.com&#x2F;xxx
-  rss: false # true、false<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="2-5修改博客的背景图片"><a href="#2-5修改博客的背景图片" class="headerlink" title="2.5修改博客的背景图片"></a>2.5修改博客的背景图片</h3><p>​        在主题目录中的_config.yml文件中找到一下内容将false改为true即可</p>
-<pre class="line-numbers language-none"><code class="language-none">background:
-  enable: true
-  url: &quot;https:&#x2F;&#x2F;gitee.com&#x2F;marmalade0&#x2F;images&#x2F;blob&#x2F;master&#x2F;www.marmalade.vip&#x2F;24.jpg&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="2-6开启博客的动态特效"><a href="#2-6开启博客的动态特效" class="headerlink" title="2.6开启博客的动态特效"></a>2.6开启博客的动态特效</h3><p>​        在主题目录中的_config.yml文件中找到一下内容 将自己需要的特效的enable值设置为truej即可</p>
-<pre class="line-numbers language-none"><code class="language-none"># 是否激活点击页面的&#39;爱心&#39;效果，默认激活.
-clicklove:
-  enable: true
-
-# | 文件名             | 说明                   |
-# | :----------------- | :--------------------- |
-# | sakura-small.js    | 少量樱花               |
-# | sakura-half.js     | 樱花相对原效果数量减半 |
-# | sakura-reduce.js   | 樱花相对原效果减少1&#x2F;4  |
-# | sakura.js          | 樱花数量不变（原效果） |
-# 默认事sakura.js，如需修改，请到下面地址修改
-# libs
-#   js:
-#     sakura: &#x2F;libs&#x2F;others&#x2F;sakura-reduce.js
-# 是否激活页面樱花效果, 只在桌面版网页启用特效
-# 下面三种特效建议选择一种就够了，
-sakura:
-  enable: false
-
-# 是否激活页面鼠标星星跟随效果, 只在桌面版网页启用特效
-mouseStar:
-  enable: false
-
-  # 是否激活页面飘雪效果, 只在桌面版网页启用特效
-snowdown:
-  enable: true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="2-7其他"><a href="#2-7其他" class="headerlink" title="2.7其他"></a>2.7其他</h3><p>​        除此之外，matery还拥有其他的很多配置参数，例如个人信息，个人项目，个人技能，目录菜单，logo等等，君等可以自行修改，配置文件中有作者的大量中文注释，还是非常通俗易懂的，大佬们如果还不满意可以自己动手修改源码，大家可以根据自己的喜好搭建拥有自己风格的博客，我认为这也是个人博客的重要意义之一。</p>
+<p>上述图例中对应的运行结果：</p>
+<p><img src="/2022/05/07/es6-feng-zhuang-tu-jie-gou/img7.png"></p>
 
                 
             </div>
@@ -613,7 +659,7 @@ snowdown:
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://asoaringfordream.github.io/2022/05/02/hexo-bo-ke-de-matery-zhu-ti-de-ge-xing-hua-pei-zhi/">https://asoaringfordream.github.io/2022/05/02/hexo-bo-ke-de-matery-zhu-ti-de-ge-xing-hua-pei-zhi/</a>
+                    <a href="https://asoaringfordream.github.io/2022/05/07/es6-feng-zhuang-tu-jie-gou/">https://asoaringfordream.github.io/2022/05/07/es6-feng-zhuang-tu-jie-gou/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -651,16 +697,20 @@ snowdown:
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Hexo/">
-                                    <span class="chip bg-color">Hexo</span>
+                                <a href="/tags/JavaScript/">
+                                    <span class="chip bg-color">JavaScript</span>
                                 </a>
                             
-                                <a href="/tags/Matery/">
-                                    <span class="chip bg-color">Matery</span>
+                                <a href="/tags/ES6/">
+                                    <span class="chip bg-color">ES6</span>
                                 </a>
                             
-                                <a href="/tags/%E4%B8%AA%E6%80%A7%E5%8C%96/">
-                                    <span class="chip bg-color">个性化</span>
+                                <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                                    <span class="chip bg-color">数据结构</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%9B%BE/">
+                                    <span class="chip bg-color">图</span>
                                 </a>
                             
                         </div>
@@ -1100,91 +1150,36 @@ snowdown:
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/05/03/hexo-bo-ke-matery-zhu-ti-tian-jia-valine-ping-lun-mo-kuai/">
+                <a href="/2022/05/07/es6-feng-zhuang-tu-jie-gou/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Hexo博客Matery主题添加valine评论模块">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="ES6封装图结构">
                         
-                        <span class="card-title">Hexo博客Matery主题添加valine评论模块</span>
+                        <span class="card-title">ES6封装图结构</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Hexo博客Matery主题添加valine评论模块
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-05-03
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Hexo/" class="post-category">
-                                    Hexo
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Hexo/">
-                        <span class="chip bg-color">Hexo</span>
-                    </a>
-                    
-                    <a href="/tags/Matery/">
-                        <span class="chip bg-color">Matery</span>
-                    </a>
-                    
-                    <a href="/tags/valine/">
-                        <span class="chip bg-color">valine</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2022/05/02/hexo-bo-ke-de-matery-zhu-ti-de-ge-xing-hua-pei-zhi/">
-                    <div class="card-image">
-                        
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Hexo博客的Matery主题的个性化配置">
-                        
-                        <span class="card-title">Hexo博客的Matery主题的个性化配置</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            Hexo博客的Matery主题的个性化配置
+                            使用JavaScript-ES6封装图结构
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-02
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-07
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Hexo/" class="post-category">
-                                    Hexo
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
+                                    数据结构
                                 </a>
                             
                             
@@ -1195,16 +1190,89 @@ snowdown:
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Hexo/">
-                        <span class="chip bg-color">Hexo</span>
+                    <a href="/tags/JavaScript/">
+                        <span class="chip bg-color">JavaScript</span>
                     </a>
                     
-                    <a href="/tags/Matery/">
-                        <span class="chip bg-color">Matery</span>
+                    <a href="/tags/ES6/">
+                        <span class="chip bg-color">ES6</span>
                     </a>
                     
-                    <a href="/tags/%E4%B8%AA%E6%80%A7%E5%8C%96/">
-                        <span class="chip bg-color">个性化</span>
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                        <span class="chip bg-color">数据结构</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%9B%BE/">
+                        <span class="chip bg-color">图</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/05/07/es6-feng-zhuang-zhan-dui-lie-zi-dian/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="ES6封装栈,队列,字典">
+                        
+                        <span class="card-title">ES6封装栈,队列,字典</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            使用JavaScript-ES6封装栈，队列，字典
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-07
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
+                                    数据结构
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/JavaScript/">
+                        <span class="chip bg-color">JavaScript</span>
+                    </a>
+                    
+                    <a href="/tags/ES6/">
+                        <span class="chip bg-color">ES6</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                        <span class="chip bg-color">数据结构</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%A0%88/">
+                        <span class="chip bg-color">栈</span>
+                    </a>
+                    
+                    <a href="/tags/%E9%98%9F%E5%88%97/">
+                        <span class="chip bg-color">队列</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%AD%97%E5%85%B8/">
+                        <span class="chip bg-color">字典</span>
                     </a>
                     
                 </div>
