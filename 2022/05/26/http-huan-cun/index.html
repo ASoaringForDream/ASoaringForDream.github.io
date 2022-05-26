@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="ES6封装哈希表（散列表）, Paper Plane">
-    <meta name="description" content="使用JavaScript-ES6封装哈希表（散列表）">
+    <meta name="keywords" content="HTTP缓存, Paper Plane">
+    <meta name="description" content="前端性能优化————HTTP缓存">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -28,7 +28,7 @@
     </style>
 
 
-    <title>ES6封装哈希表（散列表） | Paper Plane</title>
+    <title>HTTP缓存 | Paper Plane</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -260,7 +260,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">ES6封装哈希表（散列表）</h1>
+                    <h1 class="description center-align post-title">HTTP缓存</h1>
                 </div>
             </div>
         </div>
@@ -376,20 +376,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/JavaScript/">
-                                <span class="chip bg-color">JavaScript</span>
+                            <a href="/tags/%E5%89%8D%E7%AB%AF/">
+                                <span class="chip bg-color">前端</span>
                             </a>
                         
-                            <a href="/tags/ES6/">
-                                <span class="chip bg-color">ES6</span>
-                            </a>
-                        
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                                <span class="chip bg-color">数据结构</span>
-                            </a>
-                        
-                            <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/">
-                                <span class="chip bg-color">哈希表</span>
+                            <a href="/tags/HTTP%E7%BC%93%E5%AD%98/">
+                                <span class="chip bg-color">HTTP缓存</span>
                             </a>
                         
                     </div>
@@ -400,8 +392,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
-                                数据结构
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                前端
                             </a>
                         
                     </div>
@@ -413,28 +405,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-05-05
+                    2022-05-26
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-05-05
+                    2022-05-26
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    748
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    2 分
                 </div>
                 
 
@@ -457,152 +449,42 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="ES6封装哈希表（散列表）"><a href="#ES6封装哈希表（散列表）" class="headerlink" title="ES6封装哈希表（散列表）"></a>ES6封装哈希表（散列表）</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>本文采用JavaScript的ES6语法封装基本的哈希表（包含增、删、改、查、扩容等基本方法）采用链地址法解决哈希冲突的问题。本文中采用幂乘相加再求余的方式（在这里简单使用一下秦九韶算法）求取key值对应的下标值。</p>
-<h2 id="put函数（插入数据）的实现"><a href="#put函数（插入数据）的实现" class="headerlink" title="put函数（插入数据）的实现"></a>put函数（插入数据）的实现</h2><h3 id="初始化类对象"><a href="#初始化类对象" class="headerlink" title="初始化类对象"></a>初始化类对象</h3><p>初始化哈希表，代码如下</p>
-<pre class="line-numbers language-none"><code class="language-none">class HashTable &#123;
-      constructor() &#123;
-        this.storage &#x3D; [] &#x2F;&#x2F;存储数据的数组
-        this.count &#x3D; 0 &#x2F;&#x2F;记录当前数据量
-        this.limit &#x3D; 7 &#x2F;&#x2F;记录哈希表最大数据量
-      &#125;
- &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
-<h3 id="求取下标值"><a href="#求取下标值" class="headerlink" title="求取下标值"></a>求取下标值</h3><p>这里我们要求输入的key值为一个字符串。采用幂乘相加的方式（即将字符串的每个字符的Ascll码与以该字符的位数为幂127为底的数相乘，然后将每个结果相加）。举个例子，假设当前的哈希表的最大值为7；那么’name‘的对应下标的求法为：（110×127^4+97×127³+109×127²+101×127）%7</p>
-<h4 id="简介秦九韶算法"><a href="#简介秦九韶算法" class="headerlink" title="简介秦九韶算法"></a>简介秦九韶算法</h4><p>例如上述的例子中，如果按正常的求法，在程序中共需要计算乘法4+3+2+1=10次，加法1+1+1=3次。但如果将上述式子转换为（（（（（110×127）+97）×127+109）×127+101）×127）%7的话，在程序中仅需要计算乘法1+1+1+1=4次，加法次数不变。</p>
-<p>将key值抽象为长度为n的话，普通算法共需乘法法n+(n-1)+(n-2)+…+2+1=n*(n+1)/2次，加法n-1次，换算为秦九韶算法的话，共需乘法n次，加法n-1次。如果key值很长，可以大幅度提高程序的运行效率</p>
-<p>代码如下</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token function">hashFunc</span><span class="token punctuation">(</span><span class="token parameter">str<span class="token punctuation">,</span> maxLen</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">let</span> hashCode <span class="token operator">=</span> <span class="token number">0</span>
-        <span class="token comment">// 秦九韶算法</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> str<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-          hashCode <span class="token operator">=</span> <span class="token number">127</span> <span class="token operator">*</span> hashCode <span class="token operator">+</span> str<span class="token punctuation">.</span><span class="token function">charCodeAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
-        <span class="token punctuation">&#125;</span>
-        hashCode <span class="token operator">=</span> hashCode <span class="token operator">%</span> maxLen
-        <span class="token keyword">return</span> hashCode
-      <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>插入数据时存在两种情况，若对应的key值已经存在了，那么修改该key对应的value即可，反之，哈希表中数据加一。</p>
-<p>代码如下</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token function">put</span><span class="token punctuation">(</span><span class="token parameter">key<span class="token punctuation">,</span> value</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">const</span> index <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">hashFunc</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>limit<span class="token punctuation">)</span>
-        <span class="token keyword">let</span> bucket <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>storage<span class="token punctuation">[</span>index<span class="token punctuation">]</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>bucket <span class="token operator">===</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-          bucket <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-          <span class="token keyword">this</span><span class="token punctuation">.</span>storage<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">=</span> bucket
-        <span class="token punctuation">&#125;</span>
-    	<span class="token comment">//判断key值是否已经存在</span>
-    	<span class="token comment">//如果存在，则改变插入操作为修改</span>
-        <span class="token keyword">let</span> flag <span class="token operator">=</span> <span class="token boolean">false</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> item <span class="token keyword">of</span> bucket<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-          <span class="token keyword">if</span> <span class="token punctuation">(</span>item<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">===</span> key<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            item<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> value
-            flag <span class="token operator">=</span> <span class="token boolean">true</span>
-            <span class="token keyword">break</span>
-          <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">&#125;</span>
-    	<span class="token comment">//如果不存在</span>
-    	<span class="token comment">//插入数据</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>flag<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-          bucket<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">[</span>key<span class="token punctuation">,</span> value<span class="token punctuation">]</span><span class="token punctuation">)</span>
-          <span class="token keyword">this</span><span class="token punctuation">.</span>count<span class="token operator">++</span>
-          <span class="token comment">//这里是扩容操作</span>
-          <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>count <span class="token operator">></span> <span class="token keyword">this</span><span class="token punctuation">.</span>limit <span class="token operator">*</span> <span class="token number">0.75</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">resize</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getPrime</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>limit <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-          <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">&#125;</span>
-      <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="get（获取数据）方法的实现"><a href="#get（获取数据）方法的实现" class="headerlink" title="get（获取数据）方法的实现"></a>get（获取数据）方法的实现</h2><p>根据key值得到对应的下标值，然后再对应的下标值处确定是否存在一个桶（存储key值对应下标的数组或者链表，这里采用数组），如果没有（即该key值对应的下标处没有数据）则查询失败，返回false，如果有，则判断桶中是否存在该值，存在则返回该值，否则返回false</p>
-<p>代码如下</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token function">get</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">const</span> index <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">hashFunc</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>limit<span class="token punctuation">)</span>
-        <span class="token keyword">let</span> bucket <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>storage<span class="token punctuation">[</span>index<span class="token punctuation">]</span>
-        <span class="token comment">// 该下标处没有数据</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>bucket <span class="token operator">===</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-          <span class="token keyword">return</span> <span class="token keyword">null</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> item <span class="token keyword">of</span> bucket<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-          <span class="token keyword">if</span> <span class="token punctuation">(</span>item<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">===</span> key<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">return</span> item<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
-          <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">return</span> <span class="token keyword">null</span>
-      <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="remove（删除数据）方法的实现"><a href="#remove（删除数据）方法的实现" class="headerlink" title="remove（删除数据）方法的实现"></a>remove（删除数据）方法的实现</h2><p>根据key值得到对应的下标值，然后再对应的下标值处确定是否存在一个桶（存储key值对应下标的数组或者链表，这里采用数组），如果没有（即该key值对应的下标处没有数据）则查询数据失败，返回false，如果有，则判断桶中是否存在数据的key值和要删除的key值相等，存在则删除桶中的对应数据，哈希表中总数据减少1，并且返回true，否则返回false</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token function">remove</span><span class="token punctuation">(</span><span class="token parameter">key</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">const</span> index <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">hashFunc</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>limit<span class="token punctuation">)</span>
-        <span class="token keyword">let</span> bucket <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>storage<span class="token punctuation">[</span>index<span class="token punctuation">]</span>
-        <span class="token comment">//数据为空</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>bucket <span class="token operator">===</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-          <span class="token keyword">return</span> <span class="token boolean">false</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> index <span class="token keyword">in</span> bucket<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-          <span class="token keyword">if</span> <span class="token punctuation">(</span>bucket<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">===</span> key<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            bucket<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span>index<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>count<span class="token operator">--</span>
-            <span class="token comment">//这里是对哈希进行的缩小操作</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>count <span class="token operator">&lt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>limit <span class="token operator">*</span> <span class="token number">0.25</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>limit <span class="token operator">>=</span> <span class="token number">14</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-              <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">resize</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getPrime</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>limit <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            <span class="token punctuation">&#125;</span>
-            <span class="token keyword">return</span> <span class="token boolean">true</span>
-          <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">return</span> <span class="token boolean">false</span>
-      <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="isEmpty方法和size方法实现"><a href="#isEmpty方法和size方法实现" class="headerlink" title="isEmpty方法和size方法实现"></a>isEmpty方法和size方法实现</h2><p>这两个方法比较简单，代码如下</p>
-<pre class="line-numbers language-none"><code class="language-none">isEmpty() &#123;
-        return this.count &#x3D;&#x3D;&#x3D; 0
-&#125;
-size() &#123;
-        return this.count
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="判断质数与扩容函数"><a href="#判断质数与扩容函数" class="headerlink" title="判断质数与扩容函数"></a>判断质数与扩容函数</h2><h3 id="判断质数"><a href="#判断质数" class="headerlink" title="判断质数"></a>判断质数</h3><p>为什么要判断质数呢？研究表明，如果哈希表的最大限制为质数的情况下，通过key求得的下标值会更加的没有数学规律，从而使得哈希表中的数据分布更加的均匀，从而提高哈希表的效率</p>
-<p>判断一个数N是否为质数，只需要判断是否存在一个小于该数N并且大于等于2的数m，使得N%m===0即可，如果存在数m，则该数N不是质数，反之，N是质数</p>
-<p>代码如下</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token function">isPrime</span><span class="token punctuation">(</span><span class="token parameter">num</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> num<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-          <span class="token keyword">if</span> <span class="token punctuation">(</span>num <span class="token operator">%</span> i <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">return</span> <span class="token boolean">false</span>
-          <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">return</span> <span class="token boolean">true</span>
- <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>令m为数N的平方根，不难发现，如果一个数N可以被因式分解，那么其分解成的两个数a和b必然满足一个数小于等于m，另一个数大于等于m，所以，我们的算法可以优化为如下形式：</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token function">isPrime</span><span class="token punctuation">(</span><span class="token parameter">num</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">let</span> temp <span class="token operator">=</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">sqrt</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">)</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> temp<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-          <span class="token keyword">if</span> <span class="token punctuation">(</span>num <span class="token operator">%</span> i <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">return</span> <span class="token boolean">false</span>
-          <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">return</span> <span class="token boolean">true</span>
- <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>新增一个寻找质数的方法，代码如下</p>
-<pre class="line-numbers language-none"><code class="language-none">getPrime(num)&#123;
-        while (!this.isPrime(num)) &#123;
-          num++
-        &#125;
-        return num
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>至此，在之前的增加或者删除元素时，我们就可以使用扩容函数来优化哈希表的查找效率。</p>
-<p>增加元素时，添加以下代码：</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>count <span class="token operator">></span> <span class="token keyword">this</span><span class="token punctuation">.</span>limit <span class="token operator">*</span> <span class="token number">0.75</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">resize</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getPrime</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>limit <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<p>删除元素时，添加以下代码：</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>count <span class="token operator">&lt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>limit <span class="token operator">*</span> <span class="token number">0.25</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>limit <span class="token operator">>=</span> <span class="token number">14</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-              <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">resize</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getPrime</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>limit <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
+                <h1 id="HTTP缓存"><a href="#HTTP缓存" class="headerlink" title="HTTP缓存"></a>HTTP缓存</h1><h2 id="什么是HTTP缓存？"><a href="#什么是HTTP缓存？" class="headerlink" title="什么是HTTP缓存？"></a>什么是HTTP缓存？</h2><p>​    http缓存是指，当客户端向服务端第一次发送GET请求时，浏览器会根据HTTP设定的缓存规则，将请求结果存储在浏览器中，当再次发送重复的GET请求时，会优先在浏览器缓存中取得该资源，从而降低服务端压力，加快访问速度。</p>
+<h2 id="HTTP缓存的分类"><a href="#HTTP缓存的分类" class="headerlink" title="HTTP缓存的分类"></a>HTTP缓存的分类</h2><h3 id="强缓存"><a href="#强缓存" class="headerlink" title="强缓存"></a>强缓存</h3><p>​    强制缓存在缓存数据未失效的情况下（即设置的Cache-Control的max-age没有过期或者Expires的缓存时间没有过期），直接从服务器缓存中获取资源，不在向服务端发送任何的请求。http状态码为200。这种方式响应速度最快，性能最高。但是，如果在这期间服务端修改了请求内容，客户端也不会发生更新，因为他并没有向服务端发送请求。这也是我们在开发中经常遇到界面不更新的原因。Ctrl+F5强制刷新，F5刷新可以清除该缓存。</p>
+<table>
+<thead>
+<tr>
+<th align="center">header</th>
+<th align="center">可选值</th>
+<th align="center">优先级</th>
+<th align="center">优缺点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Pragma（http1.0）</td>
+<td align="center">no-catch：不直接使用缓存，根据新鲜度进行缓存（协商缓存）</td>
+<td align="center">高</td>
+<td align="center">1，响应头不支持该属性。2，为了兼容http1.0的客户端。3，http1.1已废弃该属性</td>
+</tr>
+<tr>
+<td align="center">Cache-Control（http1.1）</td>
+<td align="center">1，no-catch：不直接使用缓存，根据新鲜度进行缓存。（协商缓存）2，no-store:不使用缓存。3，max-age:强制缓存，设定过期时间</td>
+<td align="center">中</td>
+<td align="center">1，不适用与http1.0。2，响应头和请求头都支持。3，缓存未失效之前，不能获取新的资源</td>
+</tr>
+<tr>
+<td align="center">Expires（http1.0+)</td>
+<td align="center">系统时间</td>
+<td align="center">低</td>
+<td align="center">1，服务器与客户端时间不一致会出现问题。2，缓存未失效之前，不能获取新的资源</td>
+</tr>
+</tbody></table>
+<h3 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h3><p>​    当第一次请求时服务器返回的响应头中没有Cache-Control和Expires或者Cache-Control和Expires过期还或者它的属性设置为no-cache时(即不使用强缓存)，那么浏览器第二次请求时就会与服务器进行协商，与服务器端对比判断资源是否进行了修改更新。如果服务器端的资源没有修改，那么就会返回304状态码，告诉浏览器可以使用缓存中的数据，这样就减少了服务器的数据传输压力。判断有没有修改的标志有两种。</p>
+<ol>
+<li>ETag/If-Not-Match （http1.1） 对资源生成一个hash值，如果该值，相同就说明资源未修改。</li>
+<li>Last-Modified/If-Modified-Since（http1.0） 记录上次修改资源的系统时间，时间相同就认为未修改。</li>
+</ol>
+<p>不难发现，ETag/If-Not-Match可以更加精确的记录资源有没有被修改。但是hash值得计算会导致一定的性能消耗。Last-Modified/If-Modified-Since没有性能的消耗，但是不能精确到一秒内的资源修改。</p>
 
                 
             </div>
@@ -629,7 +511,7 @@ size() &#123;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://asoaringfordream.github.io/2022/05/05/es6-feng-zhuang-ha-xi-biao-san-lie-biao/">https://asoaringfordream.github.io/2022/05/05/es6-feng-zhuang-ha-xi-biao-san-lie-biao/</a>
+                    <a href="https://asoaringfordream.github.io/2022/05/26/http-huan-cun/">https://asoaringfordream.github.io/2022/05/26/http-huan-cun/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -667,20 +549,12 @@ size() &#123;
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/JavaScript/">
-                                    <span class="chip bg-color">JavaScript</span>
+                                <a href="/tags/%E5%89%8D%E7%AB%AF/">
+                                    <span class="chip bg-color">前端</span>
                                 </a>
                             
-                                <a href="/tags/ES6/">
-                                    <span class="chip bg-color">ES6</span>
-                                </a>
-                            
-                                <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                                    <span class="chip bg-color">数据结构</span>
-                                </a>
-                            
-                                <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/">
-                                    <span class="chip bg-color">哈希表</span>
+                                <a href="/tags/HTTP%E7%BC%93%E5%AD%98/">
+                                    <span class="chip bg-color">HTTP缓存</span>
                                 </a>
                             
                         </div>
@@ -1120,58 +994,52 @@ size() &#123;
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/05/05/es6-feng-zhuang-ping-heng-er-cha-shu-binarysearchtree/">
+                <a href="/2022/05/26/http-huan-cun/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="ES6封装二叉搜索树（BinarySearchTree）">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="HTTP缓存">
                         
-                        <span class="card-title">ES6封装二叉搜索树（BinarySearchTree）</span>
+                        <span class="card-title">HTTP缓存</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            使用JavaScript-ES6封装二叉搜索树（BinarySearchTree）
+                            前端性能优化————HTTP缓存
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-05-05
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-26
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
-                                    数据结构
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JavaScript/">
-                        <span class="chip bg-color">JavaScript</span>
+                    <a href="/tags/%E5%89%8D%E7%AB%AF/">
+                        <span class="chip bg-color">前端</span>
                     </a>
                     
-                    <a href="/tags/ES6/">
-                        <span class="chip bg-color">ES6</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                        <span class="chip bg-color">数据结构</span>
-                    </a>
-                    
-                    <a href="/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/">
-                        <span class="chip bg-color">二叉搜索树</span>
+                    <a href="/tags/HTTP%E7%BC%93%E5%AD%98/">
+                        <span class="chip bg-color">HTTP缓存</span>
                     </a>
                     
                 </div>
@@ -1185,31 +1053,31 @@ size() &#123;
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/05/04/es6-feng-zhuang-shuang-xiang-lian-biao/">
+                <a href="/2022/05/12/es6-pai-xu-suan-fa-zhi-mou-pao-xuan-ze-cha-ru-xi-er-kuai-pai-gui-bing/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="ES6封装双向链表">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="ES6排序算法之冒泡,选择,插入,希尔,快排,归并">
                         
-                        <span class="card-title">ES6封装双向链表</span>
+                        <span class="card-title">ES6排序算法之冒泡,选择,插入,希尔,快排,归并</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            使用JavaScript-ES6封装双向链表
+                            使用JavaScript-ES6实现冒泡排序，选择排序，插入排序，希尔排序，快速排序，归并排序
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-04
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-12
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
-                                    数据结构
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                    算法
                                 </a>
                             
                             
@@ -1227,12 +1095,8 @@ size() &#123;
                         <span class="chip bg-color">ES6</span>
                     </a>
                     
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                        <span class="chip bg-color">数据结构</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/">
-                        <span class="chip bg-color">双向链表</span>
+                    <a href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">排序算法</span>
                     </a>
                     
                 </div>

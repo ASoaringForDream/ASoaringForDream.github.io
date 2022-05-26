@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>HTTP缓存</title>
+      <link href="/2022/05/26/http-huan-cun/"/>
+      <url>/2022/05/26/http-huan-cun/</url>
+      
+        <content type="html"><![CDATA[<h1 id="HTTP缓存"><a href="#HTTP缓存" class="headerlink" title="HTTP缓存"></a>HTTP缓存</h1><h2 id="什么是HTTP缓存？"><a href="#什么是HTTP缓存？" class="headerlink" title="什么是HTTP缓存？"></a>什么是HTTP缓存？</h2><p>​    http缓存是指，当客户端向服务端第一次发送GET请求时，浏览器会根据HTTP设定的缓存规则，将请求结果存储在浏览器中，当再次发送重复的GET请求时，会优先在浏览器缓存中取得该资源，从而降低服务端压力，加快访问速度。</p><h2 id="HTTP缓存的分类"><a href="#HTTP缓存的分类" class="headerlink" title="HTTP缓存的分类"></a>HTTP缓存的分类</h2><h3 id="强缓存"><a href="#强缓存" class="headerlink" title="强缓存"></a>强缓存</h3><p>​    强制缓存在缓存数据未失效的情况下（即设置的Cache-Control的max-age没有过期或者Expires的缓存时间没有过期），直接从服务器缓存中获取资源，不在向服务端发送任何的请求。http状态码为200。这种方式响应速度最快，性能最高。但是，如果在这期间服务端修改了请求内容，客户端也不会发生更新，因为他并没有向服务端发送请求。这也是我们在开发中经常遇到界面不更新的原因。Ctrl+F5强制刷新，F5刷新可以清除该缓存。</p><table><thead><tr><th align="center">header</th><th align="center">可选值</th><th align="center">优先级</th><th align="center">优缺点</th></tr></thead><tbody><tr><td align="center">Pragma（http1.0）</td><td align="center">no-catch：不直接使用缓存，根据新鲜度进行缓存（协商缓存）</td><td align="center">高</td><td align="center">1，响应头不支持该属性。2，为了兼容http1.0的客户端。3，http1.1已废弃该属性</td></tr><tr><td align="center">Cache-Control（http1.1）</td><td align="center">1，no-catch：不直接使用缓存，根据新鲜度进行缓存。（协商缓存）2，no-store:不使用缓存。3，max-age:强制缓存，设定过期时间</td><td align="center">中</td><td align="center">1，不适用与http1.0。2，响应头和请求头都支持。3，缓存未失效之前，不能获取新的资源</td></tr><tr><td align="center">Expires（http1.0+)</td><td align="center">系统时间</td><td align="center">低</td><td align="center">1，服务器与客户端时间不一致会出现问题。2，缓存未失效之前，不能获取新的资源</td></tr></tbody></table><h3 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h3><p>​    当第一次请求时服务器返回的响应头中没有Cache-Control和Expires或者Cache-Control和Expires过期还或者它的属性设置为no-cache时(即不使用强缓存)，那么浏览器第二次请求时就会与服务器进行协商，与服务器端对比判断资源是否进行了修改更新。如果服务器端的资源没有修改，那么就会返回304状态码，告诉浏览器可以使用缓存中的数据，这样就减少了服务器的数据传输压力。判断有没有修改的标志有两种。</p><ol><li>ETag/If-Not-Match （http1.1） 对资源生成一个hash值，如果该值，相同就说明资源未修改。</li><li>Last-Modified/If-Modified-Since（http1.0） 记录上次修改资源的系统时间，时间相同就认为未修改。</li></ol><p>不难发现，ETag/If-Not-Match可以更加精确的记录资源有没有被修改。但是hash值得计算会导致一定的性能消耗。Last-Modified/If-Modified-Since没有性能的消耗，但是不能精确到一秒内的资源修改。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 前端 </tag>
+            
+            <tag> HTTP缓存 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ES6排序算法之冒泡,选择,插入,希尔,快排,归并</title>
       <link href="/2022/05/12/es6-pai-xu-suan-fa-zhi-mou-pao-xuan-ze-cha-ru-xi-er-kuai-pai-gui-bing/"/>
       <url>/2022/05/12/es6-pai-xu-suan-fa-zhi-mou-pao-xuan-ze-cha-ru-xi-er-kuai-pai-gui-bing/</url>
