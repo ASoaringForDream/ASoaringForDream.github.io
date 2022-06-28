@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>vue3按需自动引入Element-ui</title>
+      <link href="/2022/06/28/vue3-an-xu-zi-dong-yin-ru-element-ui/"/>
+      <url>/2022/06/28/vue3-an-xu-zi-dong-yin-ru-element-ui/</url>
+      
+        <content type="html"><![CDATA[<h1 id="vue3按需自动引入Element-ui"><a href="#vue3按需自动引入Element-ui" class="headerlink" title="vue3按需自动引入Element-ui"></a>vue3按需自动引入Element-ui</h1><h2 id="安装element-ui"><a href="#安装element-ui" class="headerlink" title="安装element-ui"></a>安装element-ui</h2><p>​    element-ui官网给出了vue2项目添加element-ui的方式</p><h3 id="下载element-ui"><a href="#下载element-ui" class="headerlink" title="下载element-ui"></a>下载element-ui</h3><pre class="line-numbers language-vue" data-language="vue"><code class="language-vue">npm i element-ui -S<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h3 id="引入element-ui"><a href="#引入element-ui" class="headerlink" title="引入element-ui"></a>引入element-ui</h3><h4 id="全局引入"><a href="#全局引入" class="headerlink" title="全局引入"></a>全局引入</h4><pre class="line-numbers language-vue" data-language="vue"><code class="language-vue">import Vue from &#39;vue&#39;;import ElementUI from &#39;element-ui&#39;;import &#39;element-ui&#x2F;lib&#x2F;theme-chalk&#x2F;index.css&#39;;import App from &#39;.&#x2F;App.vue&#39;;Vue.use(ElementUI);new Vue(&#123;  el: &#39;#app&#39;,  render: h &#x3D;&gt; h(App)&#125;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h4 id="按需引入"><a href="#按需引入" class="headerlink" title="按需引入"></a>按需引入</h4><p>安装插件babel-plugin-component</p><pre class="line-numbers language-vue" data-language="vue"><code class="language-vue">npm install babel-plugin-component -D<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>引入</p><pre class="line-numbers language-vue" data-language="vue"><code class="language-vue">&#123;  &quot;presets&quot;: [[&quot;es2015&quot;, &#123; &quot;modules&quot;: false &#125;]],  &quot;plugins&quot;: [    [      &quot;component&quot;,      &#123;        &quot;libraryName&quot;: &quot;element-ui&quot;,        &quot;styleLibraryName&quot;: &quot;theme-chalk&quot;      &#125;    ]  ]&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="vue3使用element-ui"><a href="#vue3使用element-ui" class="headerlink" title="vue3使用element-ui"></a>vue3使用element-ui</h2><p>element-ui目前只支持vue2</p><p>如果希望在vue3中使用element-ui，应使用element-plus插件</p><h3 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h3><pre class="line-numbers language-vue" data-language="vue"><code class="language-vue">npm i element-plus -S<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h3 id="引入插件"><a href="#引入插件" class="headerlink" title="引入插件"></a>引入插件</h3><h4 id="全局引入-1"><a href="#全局引入-1" class="headerlink" title="全局引入"></a>全局引入</h4><pre class="line-numbers language-vue" data-language="vue"><code class="language-vue">import &#123; createApp &#125; from &#39;vue&#39;import App from &#39;.&#x2F;App.vue&#39;import router from &#39;.&#x2F;router&#39;import store from &#39;.&#x2F;store&#39;import ElementPlus from &#39;element-plus&#39;;import &#39;element-ui&#x2F;lib&#x2F;theme-chalk&#x2F;index.css&#39;;createApp(App).use(store).use(router).use(ElementPlus).mount(&#39;#app&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h4 id="自动按需引入"><a href="#自动按需引入" class="headerlink" title="自动按需引入"></a>自动按需引入</h4><p>安装插件</p><pre class="line-numbers language-vue" data-language="vue"><code class="language-vue">npm install -D unplugin-vue-components unplugin-auto-import<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>修改vue.config.js文件中</p><pre class="line-numbers language-vue" data-language="vue"><code class="language-vue">const &#123; defineConfig &#125; &#x3D; require(&#39;@vue&#x2F;cli-service&#39;)const AutoImport &#x3D; require(&#39;unplugin-auto-import&#x2F;webpack&#39;)const Components &#x3D; require(&#39;unplugin-vue-components&#x2F;webpack&#39;)const &#123; ElementPlusResolver &#125; &#x3D; require(&#39;unplugin-vue-components&#x2F;resolvers&#39;)module.exports &#x3D; defineConfig(&#123;  transpileDependencies: true,  configureWebpack: &#123;......    plugins: [      AutoImport(&#123;        resolvers: [ElementPlusResolver()],      &#125;),      Components(&#123;        resolvers: [ElementPlusResolver()],      &#125;),    ],  &#125;&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> vue </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vue </tag>
+            
+            <tag> element-ui </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>HTTP缓存</title>
       <link href="/2022/05/26/http-huan-cun/"/>
       <url>/2022/05/26/http-huan-cun/</url>
