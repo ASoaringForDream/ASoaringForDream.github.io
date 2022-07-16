@@ -4,8 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="ES6封装图结构, Paper Plane">
-    <meta name="description" content="使用JavaScript-ES6封装图结构">
+    <meta name="keywords" content="Vue自定义指令，简单实现图片懒加载, Paper Plane">
+    <meta name="description" content="Vue自定义指令，简单实现图片懒加载​    这篇文章通过vue的自定义指令简单的实现一个图片懒加载的插件。
+什么是插件？插件通常用来为 Vue 添加全局功能。插件的功能范围没有严格的限制——一般有下面几种：
+
+添加全局方法或者 prope">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -28,7 +31,7 @@
     </style>
 
 
-    <title>ES6封装图结构 | Paper Plane</title>
+    <title>Vue自定义指令，简单实现图片懒加载 | Paper Plane</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -255,12 +258,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">ES6封装图结构</h1>
+                    <h1 class="description center-align post-title">Vue自定义指令，简单实现图片懒加载</h1>
                 </div>
             </div>
         </div>
@@ -376,20 +379,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/JavaScript/">
-                                <span class="chip bg-color">JavaScript</span>
+                            <a href="/tags/vue/">
+                                <span class="chip bg-color">vue</span>
                             </a>
                         
-                            <a href="/tags/ES6/">
-                                <span class="chip bg-color">ES6</span>
+                            <a href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/">
+                                <span class="chip bg-color">自定义指令</span>
                             </a>
                         
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                                <span class="chip bg-color">数据结构</span>
-                            </a>
-                        
-                            <a href="/tags/%E5%9B%BE/">
-                                <span class="chip bg-color">图</span>
+                            <a href="/tags/%E5%9B%BE%E7%89%87%E6%87%92%E5%8A%A0%E8%BD%BD/">
+                                <span class="chip bg-color">图片懒加载</span>
                             </a>
                         
                     </div>
@@ -400,8 +399,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
-                                数据结构
+                            <a href="/categories/vue/" class="post-category">
+                                vue
                             </a>
                         
                     </div>
@@ -413,28 +412,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-05-07
+                    2022-07-16
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-06-04
+                    2022-07-16
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    1.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    7 分
                 </div>
                 
 
@@ -457,182 +456,263 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="ES6封装图结构"><a href="#ES6封装图结构" class="headerlink" title="ES6封装图结构"></a>ES6封装图结构</h1><h2 id="什么是图结构？"><a href="#什么是图结构？" class="headerlink" title="什么是图结构？"></a>什么是图结构？</h2><p>图结构就是顶点与边的集合。</p>
-<p>在现实生活中，也有很多图结构的例子，比如北京市地铁图：</p>
-<p><img src="/2022/05/07/es6-feng-zhuang-tu-jie-gou/img1.png"></p>
-<p>在地铁线路图中，每个站点就是图的顶点，连接站点之间的线路就是边。</p>
-<h2 id="图结构的封装"><a href="#图结构的封装" class="headerlink" title="图结构的封装"></a>图结构的封装</h2><p>图结构的封装会使用字典和队列结构，详情见<a target="_blank" rel="noopener" href="http://localhost:4000/2022/05/07/es6-feng-zhuang-zhan-dui-lie-zi-dian/">ES6封装栈,队列,字典 | Paper Plane</a></p>
-<p>我们采用邻接表表示法。</p>
-<p>主要函数如下：</p>
-<p>addVertex(v)：添加节点</p>
-<p>addEdge(v_start, v_end)：添加边</p>
-<p>toString()：转换为字符串</p>
-<p>_BFS(v_start)：广度优先搜索</p>
-<p>_DFS(v_start)：深度优先搜索</p>
-<h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">class</span> <span class="token class-name">Graph</span> <span class="token punctuation">&#123;</span>
-      <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>vertexes <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token comment">//顶点集合</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>edges <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Dictionay</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">//边</span>
-      <span class="token punctuation">&#125;</span>
-      <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <h1 id="Vue自定义指令，简单实现图片懒加载"><a href="#Vue自定义指令，简单实现图片懒加载" class="headerlink" title="Vue自定义指令，简单实现图片懒加载"></a>Vue自定义指令，简单实现图片懒加载</h1><p>​    这篇文章通过vue的自定义指令简单的实现一个图片懒加载的插件。</p>
+<h3 id="什么是插件？"><a href="#什么是插件？" class="headerlink" title="什么是插件？"></a>什么是插件？</h3><p>插件通常用来为 Vue 添加全局功能。插件的功能范围没有严格的限制——一般有下面几种：</p>
+<ol>
+<li>添加全局方法或者 property。如：<a target="_blank" rel="noopener" href="https://github.com/karol-f/vue-custom-element">vue-custom-element</a></li>
+<li>添加全局资源：指令/过滤器/过渡等。如 <a target="_blank" rel="noopener" href="https://github.com/vuejs/vue-touch">vue-touch</a></li>
+<li>通过全局混入来添加一些组件选项。如 <a target="_blank" rel="noopener" href="https://github.com/vuejs/vue-router">vue-router</a></li>
+<li>添加 Vue 实例方法，通过把它们添加到 <code>Vue.prototype</code> 上实现。</li>
+<li>一个库，提供自己的 API，同时提供上面提到的一个或多个功能。如 vue-router</li>
+</ol>
+<h3 id="编写插件"><a href="#编写插件" class="headerlink" title="编写插件"></a>编写插件</h3><p>​    <code>vue</code>插件的实现应该暴露一个 <code>install</code> 方法。这个方法的第一个参数是 <code>Vue</code> 构造器，第二个参数是一个可选的参数对象。</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">MyPlugin<span class="token punctuation">.</span><span class="token function-variable function">install</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">Vue<span class="token punctuation">,</span> options</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token comment">// 1. 添加全局方法或property</span>
+  Vue<span class="token punctuation">.</span><span class="token function-variable function">myGlobalMethod</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 逻辑...</span>
+  <span class="token punctuation">&#125;</span>
 
-
-
-<h3 id="addVertex-v-函数实现"><a href="#addVertex-v-函数实现" class="headerlink" title="addVertex(v)函数实现"></a>addVertex(v)函数实现</h3><p>如果点已经存在，则返回false，否则，将顶点加入顶点集合，初始化该顶点的邻接表，返回true。</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 添加顶点</span>
-      <span class="token function">addVertex</span><span class="token punctuation">(</span><span class="token parameter">v</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> item <span class="token keyword">of</span> <span class="token keyword">this</span><span class="token punctuation">.</span>vertexes<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-          <span class="token keyword">if</span> <span class="token punctuation">(</span>item <span class="token operator">===</span> v<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>vertexes<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>edges<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-        <span class="token keyword">return</span> <span class="token boolean">true</span>
-      <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="addEdge-v-start-v-end-函数实现"><a href="#addEdge-v-start-v-end-函数实现" class="headerlink" title="addEdge(v_start, v_end)函数实现"></a>addEdge(v_start, v_end)函数实现</h3><p>判断判断两个顶点是否都存在，如果有一个顶点不存在，则返回false。反之，判断边是否重复，重复，返回false，不重复，加入边。</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">//添加边</span>
-      <span class="token function">addEdge</span><span class="token punctuation">(</span><span class="token parameter">v_start<span class="token punctuation">,</span> v_end</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">let</span> flag <span class="token operator">=</span> <span class="token number">0</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> item <span class="token keyword">of</span> <span class="token keyword">this</span><span class="token punctuation">.</span>vertexes<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-          <span class="token keyword">if</span> <span class="token punctuation">(</span>item <span class="token operator">===</span> v_start<span class="token punctuation">)</span> flag<span class="token operator">++</span>
-          <span class="token keyword">if</span> <span class="token punctuation">(</span>item <span class="token operator">===</span> v_end<span class="token punctuation">)</span> flag<span class="token operator">++</span>
-          <span class="token keyword">if</span> <span class="token punctuation">(</span>flag <span class="token operator">===</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">break</span>
-          <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>flag <span class="token operator">===</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-          <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> item <span class="token keyword">of</span> <span class="token keyword">this</span><span class="token punctuation">.</span>edges<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>v_start<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>item <span class="token operator">===</span> v_end<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-              <span class="token keyword">return</span> <span class="token boolean">false</span>
-            <span class="token punctuation">&#125;</span>
-          <span class="token punctuation">&#125;</span>
-          <span class="token keyword">this</span><span class="token punctuation">.</span>edges<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>v_start<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>v_end<span class="token punctuation">)</span>
-          <span class="token comment">// 无向图</span>
-          <span class="token keyword">this</span><span class="token punctuation">.</span>edges<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>v_end<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>v_start<span class="token punctuation">)</span>
-          <span class="token keyword">return</span> <span class="token boolean">true</span>
-        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-          <span class="token keyword">return</span> <span class="token boolean">false</span>
-        <span class="token punctuation">&#125;</span>
-      <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="toString-函数实现"><a href="#toString-函数实现" class="headerlink" title="toString()函数实现"></a>toString()函数实现</h3><p>遍历每个顶点，然后对每个顶点遍历每一条边，将字符串拼接返回</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 转换为字符串</span>
-      <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">let</span> str <span class="token operator">=</span> <span class="token string">''</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> item <span class="token keyword">of</span> <span class="token keyword">this</span><span class="token punctuation">.</span>vertexes<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-          str <span class="token operator">=</span> str <span class="token operator">+</span> item <span class="token operator">+</span> <span class="token string">' -> '</span>
-          <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token keyword">of</span> <span class="token keyword">this</span><span class="token punctuation">.</span>edges<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            str <span class="token operator">+=</span> i <span class="token operator">+</span> <span class="token string">' '</span>
-          <span class="token punctuation">&#125;</span>
-          str <span class="token operator">+=</span> <span class="token string">'\n'</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">return</span> str
-      <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="BFS-v-start-广度优先搜索函数实现"><a href="#BFS-v-start-广度优先搜索函数实现" class="headerlink" title="_BFS(v_start)广度优先搜索函数实现"></a>_BFS(v_start)广度优先搜索函数实现</h3><p>广度优先遍历：先访问开始节点，然后访问与开始节点相连的节点。访问完所有的相连节点后，访问与其相连节点相连的所有节点……直至所有节点都被访问完</p>
-<p>例图（A为开始节点）：</p>
-<p><img src="/2022/05/07/es6-feng-zhuang-tu-jie-gou/img2.png"></p>
-<h4 id="实现原理："><a href="#实现原理：" class="headerlink" title="实现原理："></a>实现原理：</h4><p>首先，我们给每一个顶点一个表示，这里我们给顶点颜色，白色表示该节点未被访问，黑色表示该节点已被访问。</p>
-<p>初始化颜色：</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 初始化颜色</span>
-      <span class="token function">initColor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">let</span> colors <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> item <span class="token keyword">of</span> <span class="token keyword">this</span><span class="token punctuation">.</span>vertexes<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-          colors<span class="token punctuation">[</span>item<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'white'</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">return</span> colors
-      <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>广度优先搜索可以利用队列来实现。实现思路如下：</p>
-<p>1，将初始顶点加入队列，如果队列非空，则循环做以下操作</p>
-<p>2，弹出队列的第一个顶点。然后，如果该顶点为白色，访问该顶点，将与该顶点相连的所有白色的节点加入队列，然后将该顶点置为黑色。如果该顶点为黑色就不做任何操作</p>
-<p>代码如下：</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 广度优先搜索</span>
-      <span class="token function">_BFS</span><span class="token punctuation">(</span><span class="token parameter">v_start</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">let</span> flag <span class="token operator">=</span> <span class="token boolean">false</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> item <span class="token keyword">of</span> <span class="token keyword">this</span><span class="token punctuation">.</span>vertexes<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-          <span class="token keyword">if</span> <span class="token punctuation">(</span>item <span class="token operator">===</span> v_start<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            flag <span class="token operator">=</span> <span class="token boolean">true</span>
-          <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>flag<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-          <span class="token keyword">return</span> <span class="token boolean">false</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">let</span> query <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Query</span>
-        query<span class="token punctuation">.</span><span class="token function">enqueue</span><span class="token punctuation">(</span>v_start<span class="token punctuation">)</span>
-        <span class="token keyword">let</span> colors <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">initColor</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token keyword">while</span> <span class="token punctuation">(</span>query<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token boolean">false</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-          <span class="token keyword">let</span> current <span class="token operator">=</span> query<span class="token punctuation">.</span><span class="token function">dequeue</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-          <span class="token keyword">if</span> <span class="token punctuation">(</span>colors<span class="token punctuation">[</span>current<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">'black'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">continue</span>
-          <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>colors<span class="token punctuation">[</span>current<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">'white'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> item <span class="token keyword">of</span> <span class="token keyword">this</span><span class="token punctuation">.</span>edges<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>current<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-              <span class="token keyword">if</span> <span class="token punctuation">(</span>colors<span class="token punctuation">[</span>item<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">'white'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                query<span class="token punctuation">.</span><span class="token function">enqueue</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span>
-              <span class="token punctuation">&#125;</span>
-            <span class="token punctuation">&#125;</span>
-            <span class="token comment">// console.log(query.toString());</span>
-            colors<span class="token punctuation">[</span>current<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'black'</span>
-          <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">&#125;</span>
-      <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>上述图例中对应的运行结果：</p>
-<p><img src="/2022/05/07/es6-feng-zhuang-tu-jie-gou/img3.png"></p>
-<h3 id="DFS-v-start-深度优先搜索函数实现"><a href="#DFS-v-start-深度优先搜索函数实现" class="headerlink" title="_DFS(v_start)深度优先搜索函数实现"></a>_DFS(v_start)深度优先搜索函数实现</h3><p>深度优先搜索：访问初始节点，对初始节点的一个相连节点进行深度优先搜索。</p>
-<p>例图（A为开始节点）：</p>
-<p><img src="/2022/05/07/es6-feng-zhuang-tu-jie-gou/img4.png"></p>
-<h4 id="实现原理：-1"><a href="#实现原理：-1" class="headerlink" title="实现原理："></a>实现原理：</h4><p>首先，与广度优先搜索，我们给每一个顶点一个表示，这里我们给顶点颜色，白色表示该节点未被访问，黑色表示该节点已被访问。</p>
-<p>深度优先搜索可以利用栈来实现。实现思路如下：</p>
-<p>1，将初始顶点加入栈，如果栈非空，则循环做以下操作</p>
-<p>2，弹出栈的第一个顶点。然后，如果该顶点为白色，访问该顶点，将该顶点置为黑色，然后将与该顶点相连的所有白色的节点加入栈。如果该顶点为黑色就不做任何操作。</p>
-<p>当然，我的实现代码是用递归来做的，上述实现原理用栈来解释比较好理解。为什么用递归可以来代替栈呢？很简单，我们很多语言，不只是JavaScript，这些语言底层在实现函数的嵌套调用时，就是用栈来实现的。</p>
-<p>举个栗子，对于如下代码：</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'aaa'</span><span class="token punctuation">)</span>
+  <span class="token comment">// 2. 添加全局资源</span>
+  Vue<span class="token punctuation">.</span><span class="token function">directive</span><span class="token punctuation">(</span><span class="token string">'my-directive'</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">bind</span> <span class="token punctuation">(</span><span class="token parameter">el<span class="token punctuation">,</span> binding<span class="token punctuation">,</span> vnode<span class="token punctuation">,</span> oldVnode</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token comment">// 逻辑...</span>
     <span class="token punctuation">&#125;</span>
-    <span class="token keyword">function</span> <span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-      <span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'bbb'</span><span class="token punctuation">)</span>
-    <span class="token punctuation">&#125;</span>
-    <span class="token keyword">function</span> <span class="token function">c</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-      <span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'ccc'</span><span class="token punctuation">)</span>
-    <span class="token punctuation">&#125;</span>
-    <span class="token function">c</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token operator">...</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
 
-<p>他的底层是这样的：</p>
-<p><img src="/2022/05/07/es6-feng-zhuang-tu-jie-gou/img5.png"></p>
-<p>结果就是这样的：</p>
-<p><img src="/2022/05/07/es6-feng-zhuang-tu-jie-gou/img6.png"></p>
-<p>所以我们的最终代码是这样的：</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token function">_DFS</span><span class="token punctuation">(</span><span class="token parameter">v_start</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">let</span> flag <span class="token operator">=</span> <span class="token boolean">false</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> item <span class="token keyword">of</span> <span class="token keyword">this</span><span class="token punctuation">.</span>vertexes<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-          <span class="token keyword">if</span> <span class="token punctuation">(</span>item <span class="token operator">===</span> v_start<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            flag <span class="token operator">=</span> <span class="token boolean">true</span>
-          <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>flag<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-          <span class="token keyword">return</span> <span class="token boolean">false</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">let</span> colors <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">initColor</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">dFS</span><span class="token punctuation">(</span>v_start<span class="token punctuation">,</span> colors<span class="token punctuation">)</span>
-      <span class="token punctuation">&#125;</span>
-      <span class="token function">dFS</span><span class="token punctuation">(</span><span class="token parameter">v<span class="token punctuation">,</span> colors</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>colors<span class="token punctuation">[</span>v<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">'white'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-          console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span>
-          colors<span class="token punctuation">[</span>v<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'black'</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> item <span class="token keyword">of</span> <span class="token keyword">this</span><span class="token punctuation">.</span>edges<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-          <span class="token keyword">if</span> <span class="token punctuation">(</span>colors<span class="token punctuation">[</span>item<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">'white'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">dFS</span><span class="token punctuation">(</span>item<span class="token punctuation">,</span> colors<span class="token punctuation">)</span>
-          <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">&#125;</span>
-      <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  <span class="token comment">// 3. 注入组件选项</span>
+  Vue<span class="token punctuation">.</span><span class="token function">mixin</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+    <span class="token function-variable function">created</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token comment">// 逻辑...</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token operator">...</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
 
-<p>上述图例中对应的运行结果：</p>
-<p><img src="/2022/05/07/es6-feng-zhuang-tu-jie-gou/img7.png"></p>
+  <span class="token comment">// 4. 添加实例方法</span>
+  <span class="token class-name">Vue</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">$myMethod</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">methodOptions</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 逻辑...</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="编写图片懒加载插件"><a href="#编写图片懒加载插件" class="headerlink" title="编写图片懒加载插件"></a>编写图片懒加载插件</h3><p>​    这里我们实现图片懒加载是通过一个指令，所以，我们要在全局中注册一个自定义指令。所以，我们的代码基本结构是这样的。</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> LazyLoad <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">install</span><span class="token punctuation">(</span><span class="token parameter">Vue<span class="token punctuation">,</span> options</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        Vue<span class="token punctuation">.</span><span class="token function">directive</span><span class="token punctuation">(</span><span class="token string">'lazy'</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">//代码逻辑...</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="在绑定v-lazy指令后做一些初始化操作"><a href="#在绑定v-lazy指令后做一些初始化操作" class="headerlink" title="在绑定v-lazy指令后做一些初始化操作"></a>在绑定v-lazy指令后做一些初始化操作</h3><p>​    我们要对绑定v-lazy的对象绑定初始化的图像资源，真实的图像资源。我们在bind钩子中做初始化操作。如果不熟悉vue自定义指令的话，请参考[Vue自定义指令](<a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/guide/custom-directive.html#ad">自定义指令 — Vue.js (vuejs.org)</a>)。</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> LazyLoad <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">install</span><span class="token punctuation">(</span><span class="token parameter">Vue<span class="token punctuation">,</span> options</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        Vue<span class="token punctuation">.</span><span class="token function">directive</span><span class="token punctuation">(</span><span class="token string">'lazy'</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>
+            <span class="token function">bind</span><span class="token punctuation">(</span><span class="token parameter">el<span class="token punctuation">,</span> binding</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        		<span class="token comment">// data-src储存图片真实src</span>
+    			el<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">'data-src'</span><span class="token punctuation">,</span> binding<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    			<span class="token comment">// 设置src为默认的loading图</span>
+    			el<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">'src'</span><span class="token punctuation">,</span> options<span class="token punctuation">.</span>default<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      		<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+            <span class="token comment">//代码逻辑...</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="监听滚动事件"><a href="#监听滚动事件" class="headerlink" title="监听滚动事件"></a>监听滚动事件</h3><p>​    我们要对绑定v-lazy的元素监听scroll事件，当元素滚动到可视区域后，将图片的src更改为真实的src，加载真实图片。功能实现应该在inserted钩子中。</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> LazyLoad <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">install</span><span class="token punctuation">(</span><span class="token parameter">Vue<span class="token punctuation">,</span> options</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        Vue<span class="token punctuation">.</span><span class="token function">directive</span><span class="token punctuation">(</span><span class="token string">'lazy'</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>
+            <span class="token function">bind</span><span class="token punctuation">(</span><span class="token parameter">el<span class="token punctuation">,</span> binding</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        		<span class="token comment">// data-src储存图片真实src</span>
+    			el<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">'data-src'</span><span class="token punctuation">,</span> binding<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    			<span class="token comment">// 设置src为默认的loading图</span>
+    			el<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">'src'</span><span class="token punctuation">,</span> options<span class="token punctuation">.</span>default<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      		<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+            <span class="token function">inserted</span><span class="token punctuation">(</span><span class="token parameter">el</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        			LazyLoad<span class="token punctuation">.</span><span class="token function">listenerScroll</span><span class="token punctuation">(</span>el<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      		<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token comment">//监听scroll事件</span>
+  <span class="token function">listenerScroll</span><span class="token punctuation">(</span><span class="token parameter">el</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">////如果图片本身就处于可视化区域里</span>
+    LazyLoad<span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span>el<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    window<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'scroll'</span><span class="token punctuation">,</span>LazyLoad<span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span>el<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token comment">//加载真实图片</span>
+  <span class="token function">load</span><span class="token punctuation">(</span><span class="token parameter">el</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+   	<span class="token keyword">const</span> viewWidth <span class="token operator">=</span> window<span class="token punctuation">.</span>innerWidth <span class="token operator">||</span> document<span class="token punctuation">.</span>documentElement<span class="token punctuation">.</span>clientWidth<span class="token punctuation">;</span>
+  	<span class="token keyword">const</span> viewHeight <span class="token operator">=</span> window<span class="token punctuation">.</span>innerHeight <span class="token operator">||</span> document<span class="token punctuation">.</span>documentElement<span class="token punctuation">.</span>clientHeight<span class="token punctuation">;</span>
+  	<span class="token keyword">const</span> <span class="token punctuation">&#123;</span> top<span class="token punctuation">,</span> right<span class="token punctuation">,</span> bottom<span class="token punctuation">,</span> left<span class="token punctuation">,</span><span class="token punctuation">&#125;</span> <span class="token operator">=</span> element<span class="token punctuation">.</span><span class="token function">getBoundingClientRect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//图片出现在可视化区域</span>
+   	<span class="token keyword">if</span><span class="token punctuation">(</span>top <span class="token operator">-</span> viewHeight <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> bottom <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> left <span class="token operator">-</span> viewWidth <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span>  right <span class="token operator">></span> <span class="token number">0</span> <span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>el<span class="token punctuation">.</span>dataset<span class="token punctuation">.</span>src<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            el<span class="token punctuation">.</span>src <span class="token operator">=</span> el<span class="token punctuation">.</span>dataset<span class="token punctuation">.</span>src<span class="token punctuation">;</span>
+        	el<span class="token punctuation">.</span><span class="token function">removeAttribute</span><span class="token punctuation">(</span><span class="token string">'data-src'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h3><p>​    scroll事件是一个密集触发的一个事件，为了优化代码的性能，我们可以为该事件添加一个节流操作。</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> LazyLoad <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+  <span class="token function">install</span><span class="token punctuation">(</span><span class="token parameter">Vue<span class="token punctuation">,</span> options</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      Vue<span class="token punctuation">.</span><span class="token function">directive</span><span class="token punctuation">(</span><span class="token string">'lazy'</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">bind</span><span class="token punctuation">(</span><span class="token parameter">el<span class="token punctuation">,</span> binding</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+          <span class="token comment">// data-src储存图片真实src</span>
+          el<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">'data-src'</span><span class="token punctuation">,</span> binding<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token comment">// console.log(el.dataset.src)</span>
+          <span class="token comment">// 设置src为默认的loading图</span>
+          el<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">'src'</span><span class="token punctuation">,</span> options<span class="token punctuation">.</span>default<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+        <span class="token function">inserted</span><span class="token punctuation">(</span><span class="token parameter">el</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+          LazyLoad<span class="token punctuation">.</span><span class="token function">listenerScroll</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span>options<span class="token punctuation">.</span>delay<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+      <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+<span class="token comment">//监听scroll事件</span>
+<span class="token function">listenerScroll</span><span class="token punctuation">(</span><span class="token parameter">el<span class="token punctuation">,</span>delay</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  delay <span class="token operator">=</span> delay <span class="token operator">?</span> delay <span class="token operator">:</span> <span class="token number">300</span>
+  <span class="token keyword">let</span> handler <span class="token operator">=</span> LazyLoad<span class="token punctuation">.</span><span class="token function">throttle</span><span class="token punctuation">(</span>LazyLoad<span class="token punctuation">.</span>load<span class="token punctuation">,</span> delay<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// console.log(handler)</span>
+  <span class="token comment">//如果图片本身就处于可视化区域里</span>
+  LazyLoad<span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span>el<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  window<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'scroll'</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    <span class="token function">handler</span><span class="token punctuation">(</span>el<span class="token punctuation">)</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+<span class="token comment">//加载真实图片</span>
+<span class="token function">load</span><span class="token punctuation">(</span><span class="token parameter">el</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">const</span> viewWidth <span class="token operator">=</span> window<span class="token punctuation">.</span>innerWidth <span class="token operator">||</span> document<span class="token punctuation">.</span>documentElement<span class="token punctuation">.</span>clientWidth<span class="token punctuation">;</span>
+  <span class="token keyword">const</span> viewHeight <span class="token operator">=</span> window<span class="token punctuation">.</span>innerHeight <span class="token operator">||</span> document<span class="token punctuation">.</span>documentElement<span class="token punctuation">.</span>clientHeight<span class="token punctuation">;</span>
+  <span class="token keyword">const</span> <span class="token punctuation">&#123;</span> top<span class="token punctuation">,</span> right<span class="token punctuation">,</span> bottom<span class="token punctuation">,</span> left <span class="token punctuation">&#125;</span> <span class="token operator">=</span> el<span class="token punctuation">.</span><span class="token function">getBoundingClientRect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">//图片出现在可视化区域</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span>top <span class="token operator">-</span> viewHeight <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> bottom <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> left <span class="token operator">-</span> viewWidth <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span>  right <span class="token operator">></span> <span class="token number">0</span> <span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>el<span class="token punctuation">.</span>dataset<span class="token punctuation">.</span>src<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+      el<span class="token punctuation">.</span>src <span class="token operator">=</span> el<span class="token punctuation">.</span>dataset<span class="token punctuation">.</span>src<span class="token punctuation">;</span>
+      el<span class="token punctuation">.</span><span class="token function">removeAttribute</span><span class="token punctuation">(</span><span class="token string">'data-src'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+<span class="token comment">// 节流</span>
+<span class="token function">throttle</span><span class="token punctuation">(</span><span class="token parameter">fn<span class="token punctuation">,</span> delay</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">let</span> timer<span class="token punctuation">;</span>
+  <span class="token keyword">let</span> prev<span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token operator">...</span>args</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">let</span> curr <span class="token operator">=</span> Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> context <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>prev<span class="token punctuation">)</span> prev <span class="token operator">=</span> curr<span class="token punctuation">;</span>
+      <span class="token function">clearTimeout</span><span class="token punctuation">(</span>timer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>curr <span class="token operator">-</span> prev <span class="token operator">></span> delay<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      prev <span class="token operator">=</span> Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">fn</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">clearTimeout</span><span class="token punctuation">(</span>timer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    timer <span class="token operator">=</span> <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      prev <span class="token operator">=</span> Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      timer <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+      <span class="token function">fn</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> delay <span class="token operator">-</span> curr <span class="token operator">+</span> prev <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h3><p>测试结果如下：</p>
+<p><img src="/2022/07/16/vue-zi-ding-yi-zhi-ling-jian-dan-shi-xian-tu-pian-lan-jia-zai/%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C1.gif"></p>
+<h3 id="滚动监听优化之IntersectionObserver"><a href="#滚动监听优化之IntersectionObserver" class="headerlink" title="滚动监听优化之IntersectionObserver"></a>滚动监听优化之IntersectionObserver</h3><p>最近看到了一个非常好用的API——IntersectionObserver，<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Intersection_Observer_API">MDN地址</a>。这个 提供了一种异步检测目标元素与祖先元素或 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Glossary/Viewport">viewport</a> 相交情况变化的方法。我们现在来使用这个API代替监听scroll事件判断图片是否出现在可视化区域中。</p>
+<pre class="line-numbers language-JavaScript" data-language="JavaScript"><code class="language-JavaScript">
+const LazyLoad &#x3D; &#123;
+  &#x2F;&#x2F;存放IntersectionObserver
+  io: null,
+  &#x2F;&#x2F;注册install方法
+  install(Vue, options) &#123;
+      Vue.directive(&#39;lazy&#39;, &#123;
+        bind(el, binding) &#123;
+          &#x2F;&#x2F; data-src储存图片真实src
+          el.setAttribute(&#39;data-src&#39;, binding.value);
+          &#x2F;&#x2F; 设置src为默认的loading图
+          el.setAttribute(&#39;src&#39;, options.default);
+        &#125;,
+        inserted(el) &#123;
+             &#x2F;&#x2F;判断当前浏览器是否兼容IntersectionObserver
+        	if (&#39;IntersectionObserver&#39; in window) &#123;
+          		LazyLoad.observe(el);
+        	&#125; else &#123;
+          		LazyLoad.listenerScroll(el,options.delay);
+        	&#125;
+        &#125;,
+      &#125;)
+  &#125;,
+&#x2F;&#x2F;利用IntersectionObserver监听图片
+observe(el)&#123;
+    if (LazyLoad.io) &#123;
+      LazyLoad.io.observe(el);
+    &#125; else &#123;
+      LazyLoad.io &#x3D; new IntersectionObserver(entries &#x3D;&gt; &#123;
+        entries.forEach((item) &#x3D;&gt; &#123;
+          if(item.isIntersecting) &#123;
+            item.target.src &#x3D; item.target.dataset.src;
+            item.target.removeAttribute(&#39;data-src&#39;);
+            LazyLoad.io.unobserve(item.target);
+          &#125;
+        &#125;)
+      &#125;);
+      LazyLoad.io.observe(el);
+    &#125;
+&#125;,
+&#x2F;&#x2F;监听scroll事件
+listenerScroll(el,delay) &#123;
+  delay &#x3D; delay ? delay : 300
+  let handler &#x3D; LazyLoad.throttle(LazyLoad.load, delay);
+  &#x2F;&#x2F;如果图片本身就处于可视化区域里
+  LazyLoad.load(el);
+  window.addEventListener(&#39;scroll&#39;,() &#x3D;&gt; &#123;
+    handler(el)
+  &#125;);
+&#125;,
+&#x2F;&#x2F;加载真实图片
+load(el) &#123;
+  const viewWidth &#x3D; window.innerWidth || document.documentElement.clientWidth;
+  const viewHeight &#x3D; window.innerHeight || document.documentElement.clientHeight;
+  const &#123; top, right, bottom, left &#125; &#x3D; el.getBoundingClientRect();
+  &#x2F;&#x2F;图片出现在可视化区域
+  if(top - viewHeight &lt; 0 &amp;&amp; bottom &gt; 0 &amp;&amp; left - viewWidth &lt; 0 &amp;&amp;  right &gt; 0 )&#123;
+    if(el.dataset.src)&#123;
+      el.src &#x3D; el.dataset.src;
+      el.removeAttribute(&#39;data-src&#39;);
+    &#125;
+  &#125;
+&#125;,
+&#x2F;&#x2F; 节流
+throttle(fn, delay) &#123;
+  let timer;
+  let prev;
+  return function (...args) &#123;
+    let curr &#x3D; Date.now();
+    let context &#x3D; this;
+    if (!prev) prev &#x3D; curr;
+      clearTimeout(timer);
+
+    if (curr - prev &gt; delay) &#123;
+      prev &#x3D; Date.now();
+      fn.apply(context, args);
+      clearTimeout(timer);
+      return;
+    &#125;
+
+    timer &#x3D; setTimeout(function () &#123;
+      prev &#x3D; Date.now();
+      timer &#x3D; null;
+      fn.apply(context, args);
+    &#125;, delay - curr + prev );
+  &#125;
+&#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>​    到这里，图片懒加载的插件就已经完成了，最后我们只需要向外暴露出LazyLoad对象，然后再Vue项目中调用Vue.use(LazyLoad)就可以使用啦。亲测可用。由于我是第一次尝试编写插件，如果有小伙伴们发现问题，欢迎留言与评论</p>
 
                 
             </div>
@@ -659,7 +739,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://asoaringfordream.github.io/2022/05/07/es6-feng-zhuang-tu-jie-gou/">https://asoaringfordream.github.io/2022/05/07/es6-feng-zhuang-tu-jie-gou/</a>
+                    <a href="https://asoaringfordream.github.io/2022/07/16/vue-zi-ding-yi-zhi-ling-jian-dan-shi-xian-tu-pian-lan-jia-zai/">https://asoaringfordream.github.io/2022/07/16/vue-zi-ding-yi-zhi-ling-jian-dan-shi-xian-tu-pian-lan-jia-zai/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -697,20 +777,16 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/JavaScript/">
-                                    <span class="chip bg-color">JavaScript</span>
+                                <a href="/tags/vue/">
+                                    <span class="chip bg-color">vue</span>
                                 </a>
                             
-                                <a href="/tags/ES6/">
-                                    <span class="chip bg-color">ES6</span>
+                                <a href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/">
+                                    <span class="chip bg-color">自定义指令</span>
                                 </a>
                             
-                                <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                                    <span class="chip bg-color">数据结构</span>
-                                </a>
-                            
-                                <a href="/tags/%E5%9B%BE/">
-                                    <span class="chip bg-color">图</span>
+                                <a href="/tags/%E5%9B%BE%E7%89%87%E6%87%92%E5%8A%A0%E8%BD%BD/">
+                                    <span class="chip bg-color">图片懒加载</span>
                                 </a>
                             
                         </div>
@@ -1150,54 +1226,56 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/05/12/es6-pai-xu-suan-fa-zhi-mou-pao-xuan-ze-cha-ru-xi-er-kuai-pai-gui-bing/">
+                <a href="/2022/07/16/vue-zi-ding-yi-zhi-ling-jian-dan-shi-xian-tu-pian-lan-jia-zai/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="ES6排序算法之冒泡,选择,插入,希尔,快排,归并">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Vue自定义指令，简单实现图片懒加载">
                         
-                        <span class="card-title">ES6排序算法之冒泡,选择,插入,希尔,快排,归并</span>
+                        <span class="card-title">Vue自定义指令，简单实现图片懒加载</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            使用JavaScript-ES6实现冒泡排序，选择排序，插入排序，希尔排序，快速排序，归并排序
+                            
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-05-12
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-16
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
-                                    算法
+                            <a href="/categories/vue/" class="post-category">
+                                    vue
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JavaScript/">
-                        <span class="chip bg-color">JavaScript</span>
+                    <a href="/tags/vue/">
+                        <span class="chip bg-color">vue</span>
                     </a>
                     
-                    <a href="/tags/ES6/">
-                        <span class="chip bg-color">ES6</span>
+                    <a href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/">
+                        <span class="chip bg-color">自定义指令</span>
                     </a>
                     
-                    <a href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">
-                        <span class="chip bg-color">排序算法</span>
+                    <a href="/tags/%E5%9B%BE%E7%89%87%E6%87%92%E5%8A%A0%E8%BD%BD/">
+                        <span class="chip bg-color">图片懒加载</span>
                     </a>
                     
                 </div>
@@ -1211,31 +1289,31 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/05/07/es6-feng-zhuang-zhan-dui-lie-zi-dian/">
+                <a href="/2022/07/14/qian-xi-snobbdom-yuan-ma-liao-jie-xu-ni-dom-he-diff-suan-fa/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="ES6封装栈,队列,字典">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="浅析snobbdom源码，进一步了解虚拟dom和diff算法">
                         
-                        <span class="card-title">ES6封装栈,队列,字典</span>
+                        <span class="card-title">浅析snobbdom源码，进一步了解虚拟dom和diff算法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            使用JavaScript-ES6封装栈，队列，字典
+                            其实vue的虚拟dom和diff算法是基于snobbdom实现的，本文对虚拟dom和diff算法的鼻祖snobbdom的源码做一定的解读。
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-14
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
-                                    数据结构
+                            <a href="/categories/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" class="post-category">
+                                    源码解析
                                 </a>
                             
                             
@@ -1245,28 +1323,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JavaScript/">
-                        <span class="chip bg-color">JavaScript</span>
+                    <a href="/tags/vue/">
+                        <span class="chip bg-color">vue</span>
                     </a>
                     
-                    <a href="/tags/ES6/">
-                        <span class="chip bg-color">ES6</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                        <span class="chip bg-color">数据结构</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%A0%88/">
-                        <span class="chip bg-color">栈</span>
-                    </a>
-                    
-                    <a href="/tags/%E9%98%9F%E5%88%97/">
-                        <span class="chip bg-color">队列</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%AD%97%E5%85%B8/">
-                        <span class="chip bg-color">字典</span>
+                    <a href="/tags/%E8%99%9A%E6%8B%9Fdom%E5%92%8Cdiff%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">虚拟dom和diff算法</span>
                     </a>
                     
                 </div>
