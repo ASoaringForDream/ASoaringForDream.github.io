@@ -564,7 +564,7 @@ header .go-back i {
     display: block;
     left: 0;
     top: 0;
-    content: "";
+    /* content: ""; */
 }
 
 .bg-cover .container {
@@ -578,13 +578,14 @@ header .go-back i {
     line-height: 1.2em;
     margin-bottom: 20px;
     position: relative;
+    color: rgb(12, 189, 243);
 }
 
 .bg-cover .description {
     font-weight: 300;
     font-size: 1.25rem;
     line-height: 1.4em;
-    color: #eee;
+    color: rgb(1, 248, 133);
 }
 
 .bg-cover .post-title {
